@@ -1,0 +1,468 @@
+.section {
+    margin-block: clamp(28px, 6vw, 72px);
+}
+
+.header {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+    align-items: end;
+}
+
+@media (min-width: 980px) {
+    .header {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 6px 0;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--slate);
+}
+
+.lede {
+    margin: 8px 0 0 0;
+    color: var(--muted);
+}
+
+/* Search */
+.searchWrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+}
+
+.search {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 36px;
+    font-size: 14px;
+    background: #fff;
+    color: var(--slate);
+}
+
+.search:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.count {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 0 6px;
+}
+
+/* Filters & actions */
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.filterLabel {
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 6px 10px;
+    font-size: 13px;
+    background: linear-gradient(180deg, rgba(245, 247, 250, .9), #fff);
+    color: var(--slate);
+}
+
+.pill:hover {
+    border-color: color-mix(in srgb, var(--blue) 40%, var(--line) 60%);
+}
+
+.pillOn {
+    background: color-mix(in srgb, var(--blue) 12%, white 88%);
+    border-color: color-mix(in srgb, var(--blue) 40%, var(--line) 60%);
+}
+
+.clear {
+    margin-left: auto;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--blue) 92%, black 8%);
+}
+
+.clear:hover {
+    text-decoration: underline;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Layout: sticky year nav + timeline */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+@media (min-width: 1100px) {
+    .layout {
+        grid-template-columns: 180px 1fr;
+    }
+}
+
+.yearNav {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 1100px) {
+    .yearNav {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+.yearLink {
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--slate);
+    text-decoration: none;
+    background: #fff;
+}
+
+.yearLink:hover, .yearLink:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.yearGroup {
+    position: relative;
+    padding-left: 24px;
+    margin-top: 8px;
+}
+
+.yearBadge {
+    position: sticky;
+    top: 80px;
+    font-weight: 800;
+    color: var(--slate);
+    background: transparent;
+    margin-bottom: 8px;
+}
+
+/* Invisible year anchors for years with no events */
+.yearAnchor {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    min-height: 1px;
+}
+
+/* Items grid */
+.items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+}
+
+/* Node + card */
+.item {
+    position: relative;
+}
+
+.item::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: -14px;
+    width: 2px;
+    background: color-mix(in srgb, var(--blue) 12%, var(--line) 88%);
+}
+
+.dot {
+    position: absolute;
+    left: 4px;
+    top: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, white 82%);
+}
+
+.card {
+    position: relative;
+    margin-left: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    padding: 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    transition: box-shadow .16s ease, transform .16s ease, border-color .16s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .10);
+    border-color: color-mix(in srgb, var(--blue) 30%, var(--line) 70%);
+}
+
+.card:focus-within {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+/* Logo row — larger, responsive, non-square friendly */
+.logoBar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    min-height: clamp(64px, 4.5vw, 120px);
+}
+
+.logoImg {
+    display: block;
+    height: clamp(64px, 4.5vw, 120px); /* bigger logo */
+    width: auto; /* preserve aspect ratio */
+    max-width: 100%;
+    object-fit: contain; /* safety for SVG-to-raster edge cases */
+    background: transparent; /* avoid white box on transparent logos */
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .05));
+}
+
+/* Meta & text */
+.metaRow {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.time {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: var(--slate);
+    background: linear-gradient(180deg, rgba(245, 247, 250, .9), #fff);
+}
+
+.h2 {
+    margin: 6px 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate);
+    letter-spacing: -0.01em;
+}
+
+.summary {
+    margin: 0;
+    color: var(--muted);
+}
+
+.links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.link {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--blue) 92%, black 8%);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Print — compact list for PDFs */
+@media print {
+    .yearNav, .controls, .actions {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+    }
+
+    .item::before {
+        background: #999;
+    }
+}
+
+/* --- Media grid (images below copy; no crop) --- */
+.mediaGrid {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+    .mediaGrid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+.mediaItem {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f6f7fb;
+}
+
+.mediaBtn {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.ratioSixteenNine {
+    aspect-ratio: 16 / 9;
+}
+
+.ratioFourThree {
+    aspect-ratio: 4 / 3;
+}
+
+.ratioSquare {
+    aspect-ratio: 1 / 1;
+}
+
+.mediaImgContain {
+    object-fit: contain;
+}
+
+/* --- Modal for enlarged images --- */
+.modalBackdrop {
+    position: fixed;
+    inset: 0;
+    background: color-mix(in srgb, rgba(12, 18, 28, 0.72) 100%, transparent 0%);
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal {
+    position: relative;
+    width: min(1200px, 96vw);
+    max-height: 90vh;
+    background: #0b0f14;
+    border: 1px solid color-mix(in srgb, var(--line) 70%, #000 30%);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    padding: 44px 16px 16px 16px;
+}
+
+.modalClose {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modalClose:hover,
+.modalClose:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.modalImgWrap {
+    position: relative;
+    width: 100%;
+    height: min(80vh, 70dvh);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0e1117;
+}
+
+.modalImg {
+    object-fit: contain;
+}

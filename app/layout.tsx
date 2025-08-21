@@ -82,6 +82,7 @@ function Header() {
                     <ul>
                         <li><Link href="/case-studies">Case Studies</Link></li>
                         <li><Link href="/skills">Skills</Link></li>
+                        <li><Link href="/timeline">Timeline</Link></li>
                         <li><Link href="/contact">Contact</Link></li>
                         {/* Serve the PDF directly; download attribute sets a clean filename */}
                         <li>

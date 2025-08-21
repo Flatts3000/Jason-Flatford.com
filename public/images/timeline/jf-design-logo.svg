@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  
+    <defs>
+      <linearGradient id="g2" x1="0" x2="1">
+        <stop offset="0%" stop-color="#1ee3cf"/>
+        <stop offset="100%" stop-color="#ff4d6d"/>
+      </linearGradient>
+    </defs>
+  <!-- Swatches -->
+  <rect x="120" y="220" width="60" height="60" rx="10" fill="#0b1220"/>
+  <rect x="190" y="220" width="60" height="60" rx="10" fill="#1ee3cf"/>
+  <rect x="260" y="220" width="60" height="60" rx="10" fill="#ff4d6d"/>
+  <!-- Wordmark (optical kerning tuned for J.F.) -->
+  <text x="360" y="260" font-size="120" font-weight="800" letter-spacing="1" font-family="Inter, Manrope, Verdana, Arial" fill="#0b1220">J.F. DESIGN</text>
+  <text x="360" y="340" font-size="40" font-weight="500" font-family="Inter, Manrope, Verdana, Arial" fill="#0b1220" opacity="0.8">LLC</text>
+  <rect x="360" y="360" width="900" height="14" fill="url(#g2)"/>
+</svg>
