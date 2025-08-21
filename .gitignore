@@ -1,0 +1,136 @@
+# ─────────────────────────────────────────────────────────────
+# Node / Package managers
+# ─────────────────────────────────────────────────────────────
+node_modules/
+.npm/
+.pnpm-store/
+.npmrc.local
+# Yarn (keep core Yarn 2+ files if you ever switch)
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/versions
+!.yarn/sdks
+!.yarn/patches
+
+# ─────────────────────────────────────────────────────────────
+# Next.js / Build outputs
+# ─────────────────────────────────────────────────────────────
+.next/
+out/
+dist/
+build/
+.turbo/
+.swc/
+.cache/
+.parcel-cache/
+
+# Storybook / static site builds (if used)
+storybook-static/
+
+# ─────────────────────────────────────────────────────────────
+# Env & secrets (keep an example committed)
+# ─────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ─────────────────────────────────────────────────────────────
+# Logs & diagnostics
+# ─────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.pid
+*.pid.lock
+
+# ─────────────────────────────────────────────────────────────
+# Lint / TypeScript caches
+# ─────────────────────────────────────────────────────────────
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ─────────────────────────────────────────────────────────────
+# Testing outputs (Cypress / Playwright / Vitest, etc.)
+# ─────────────────────────────────────────────────────────────
+coverage/
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+.vitest/
+
+# ─────────────────────────────────────────────────────────────
+# Vercel / deploy tooling (usually local-only)
+# ─────────────────────────────────────────────────────────────
+.vercel/
+
+# Netlify / Serverless / Wrangler (if experimented)
+.netlify/
+.serverless/
+.wrangler/
+
+# ─────────────────────────────────────────────────────────────
+# Editors / IDE
+# ─────────────────────────────────────────────────────────────
+# JetBrains (IntelliJ IDEA Ultimate)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code (ignore most, allow common sharable files)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Other editors
+.fleet/
+.history/
+
+# ─────────────────────────────────────────────────────────────
+# OS junk
+# ─────────────────────────────────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ─────────────────────────────────────────────────────────────
+# Misc / temporary
+# ─────────────────────────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*.orig
+
+# Local data files you don’t want in git (uncomment if needed)
+# *.sqlite
+# *.db
+# /data/*

@@ -1,0 +1,122 @@
+/* Two-column hero (copy left, headshot right) — airy executive */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr; /* mobile: stack */
+    gap: clamp(28px, 4.5vw, 72px);
+    align-items: center;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: clamp(56px, 9vw, 72px) clamp(24px, 6vw, 72px);
+    border-radius: 28px;
+    border: 1px solid var(--line);
+    background: radial-gradient(1000px 420px at 50% -14%, rgba(15, 42, 107, 0.06), rgba(0, 0, 0, 0)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92));
+    margin-block-end: clamp(56px, 10vw, 72px);
+    text-align: left;
+}
+
+/* desktop: 2 columns; right column sized for a 240px image + breathing room */
+@media (min-width: 1024px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr) 300px;
+    }
+
+    .photo {
+        justify-self: end;
+    }
+}
+
+/* Copy column */
+.copy {
+    display: flex;
+    flex-direction: column;
+    max-width: 80ch;
+    gap: 16px;
+}
+
+.cta {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* Typographic roles (scoped to hero) */
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 10px 0;
+}
+
+/* narrow headline for punchy wraps */
+.display {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.06;
+    margin: 0;
+    color: var(--slate);
+    max-width: 18ch;
+}
+
+.subtitle {
+    font-weight: 600;
+    font-size: clamp(20px, 3.2vw, 28px);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--slate);
+    max-width: 40ch;
+}
+
+.lede {
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: var(--muted);
+    margin: 12px 0 0 0;
+    max-width: 65ch;
+}
+
+/* Photo column */
+.photo {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .photo {
+        justify-content: end;
+    }
+}
+
+/* Avatar (240px) + subtle accent ring */
+.avatar {
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: #fff;
+    width: 240px;
+    height: 240px;
+}
+
+.avatarElevated {
+    box-shadow: 0 16px 42px rgba(0, 0, 0, .12);
+}
+
+.avatarRing {
+    outline: 6px solid color-mix(in srgb, var(--accent) 16%, white 84%);
+    outline-offset: 4px;
+}
+
+/* Print: keep résumé printouts clean */
+@media print {
+    .photo {
+        display: none !important;
+    }
+}

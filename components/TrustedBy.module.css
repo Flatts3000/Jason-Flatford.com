@@ -1,0 +1,76 @@
+.section {
+    margin-block: clamp(28px, 6vw, 56px);
+}
+
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.title {
+    margin: 4px 0 0 0;
+    font-size: clamp(18px, 2.6vw, 22px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--slate);
+}
+
+/* Grid that adapts to any logo shapes */
+.rail {
+    display: grid;
+    gap: clamp(12px, 2vw, 20px);
+    margin-top: 16px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+    .rail {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Each logo sits inside a framed cell for consistent sizing */
+.cell {
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    padding: 16px 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    transition: box-shadow .15s ease, transform .15s ease, filter .15s ease, opacity .15s ease;
+}
+
+.cell:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .10);
+    transform: translateY(-1px);
+}
+
+/* Logos: grayscale + slight opacity by default, full color on hover */
+.logo {
+    max-width: 100%;
+    max-height: 80px; /* keeps rows tidy */
+    height: auto;
+    opacity: .75;
+}
+
+.cell:hover .logo, .cell:focus-within .logo {
+    filter: none;
+    opacity: 1;
+}
+
+.footnote {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+}

@@ -1,0 +1,75 @@
+/* CTA panel — airy, executive */
+.section {
+    margin-block: clamp(32px, 7vw, 72px);
+}
+
+.inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: clamp(28px, 5vw, 44px) clamp(16px, 5vw, 40px);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: radial-gradient(900px 380px at 50% -18%, rgba(15, 42, 107, 0.06), rgba(0, 0, 0, 0)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92));
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr; /* mobile: stack */
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .inner {
+        grid-template-columns: 1fr auto; /* copy | actions */
+        gap: clamp(20px, 4vw, 32px);
+    }
+}
+
+.copy {
+    max-width: 70ch;
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 6px 0;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(22px, 3.2vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--slate);
+}
+
+.lede {
+    margin: 8px 0 0 0;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* Buttons row */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.tertiary {
+    font-weight: 600;
+    text-decoration: none;
+    color: color-mix(in srgb, var(--blue) 92%, black 8%);
+}
+
+.tertiary:hover {
+    text-decoration: underline;
+}
+
+.tertiary:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
