@@ -22,7 +22,7 @@ export function Hero() {
 
                 <div className={styles.cta}>
                     <a
-                        href="https://calendly.com/flatts-scg"
+                        href="https://calendly.com/flatts-scg/15-minute-intro"
                         className="btn btn-primary"
                         aria-label="Book a 15-minute intro via Calendly"
                     >

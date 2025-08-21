@@ -1,0 +1,179 @@
+.section {
+    margin-block: clamp(28px, 6vw, 72px);
+}
+
+.grid {
+    max-width: var(--container);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(20px, 4vw, 36px);
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+@media (min-width: 980px) {
+    .grid {
+        grid-template-columns: 1.1fr 1fr;
+    }
+}
+
+/* LEFT SIDE */
+.copy {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: clamp(24px, 4.5vw, 36px);
+    background: radial-gradient(900px 360px at 50% -18%, rgba(15, 42, 107, 0.06), rgba(0, 0, 0, 0)),
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .92));
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 6px 0;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--slate);
+}
+
+.lede {
+    margin: 10px 0 0 0;
+    color: var(--muted);
+}
+
+.quickLinks {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.notes {
+    margin: 12px 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* RIGHT SIDE — FORM CARD */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: #fff;
+    padding: clamp(20px, 3.6vw, 30px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.cardTitle {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate);
+}
+
+/* Alerts */
+.alertSuccess, .alertError {
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin: 8px 0 10px;
+    font-size: 14px;
+}
+
+.alertSuccess {
+    background: color-mix(in srgb, var(--blue) 14%, white 86%);
+    border: 1px solid color-mix(in srgb, var(--blue) 24%, white 76%);
+}
+
+.alertError {
+    background: #fff4f4;
+    border: 1px solid #ffd7d7;
+}
+
+/* Fields */
+.fieldsTwo {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+    .fieldsTwo {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+/* ⬇️ Scope element selectors to a local class for CSS Modules */
+.field label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.field input,
+.field textarea {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+    background: #fff;
+    color: var(--slate);
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.optional {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+/* Anti-bot */
+.honey {
+    position: absolute !important;
+    left: -10000px !important;
+    opacity: 0 !important;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
+
+.turnstile {
+    margin-top: 6px;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.status {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.smallprint {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--muted);
+}
