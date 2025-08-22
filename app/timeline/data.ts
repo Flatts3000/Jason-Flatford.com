@@ -245,7 +245,7 @@ export const EVENTS: TimelineEvent[] = [
     },
     {
         id: "endless-grimoire-pre-mvp",
-        date: "2025-08-01",
+        date: "2025-06-01",
         title: "The Endless Grimoire — idle mobile game (pre-MVP)",
         summary: "Pre-MVP prototype in React Native/Expo focused on core loops (gather → automate → cast). Built a single-source-of-truth stats/modifier engine powering workers & accelerators, a JSON-driven spellbook (active/passive grid with adjacency unlocks, cooldowns, and haptics), offline progression/reconciliation, and geometric pricing.",
         tags: ["The Endless Grimoire", "Gaming", "Mobile", "Systems Design", "Pre-MVP"],
