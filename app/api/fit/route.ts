@@ -1,4 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
+import {Resend} from "resend";
 
 /** Keep Node runtime for parsers */
 export const runtime = "nodejs";
@@ -29,7 +30,10 @@ async function readFileText(file: File): Promise<string> {
     if (type === "text/plain" || ext === "txt") {
         return buf.toString("utf8").trim();
     }
-    if (type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || ext === "docx") {
+    if (
+        type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        ext === "docx"
+    ) {
         const mammoth = await import("mammoth");
         const {value} = await mammoth.extractRawText({buffer: buf});
         return (value || "").trim();
@@ -46,18 +50,15 @@ const PROFILE = {
         "Chief Experience Officer", "Chief AI Officer", "Chief Transformation Officer"
     ],
     locations: ["Roanoke, VA", "Washington DC", "Seattle, WA"],
-    industries: [
-        "SaaS", "AI/ML", "Gaming/Esports", "Civic Tech", "Cybersecurity",
-        "Health Tech", "Infrastructure/Civil Tech", "Developer Platforms"
-    ],
+    industries: ["SaaS", "AI/ML", "Gaming/Esports", "Civic Tech", "Cybersecurity", "Health Tech", "Infrastructure/Civil Tech", "Developer Platforms"],
     stagePref: ["Series A", "Series B", "Series C", "High-growth <500 employees"],
     strengths: [
-        "Scaled Melee.gg from launch to 400K+ users, ~70K MAU, and ~13K B2B organizer partners",
-        "Architected and operated a 2M+ LOC multi-tenant SaaS with real-time analytics, multilingual UX, and PCI-aware payments",
-        "Integrated OpenAI-powered analytics & automation to reduce operational workload and boost feature adoption",
-        "Executive leadership + hands-on full-stack (.NET, Java/Kotlin/Spring Boot, React/React Native; AWS/Azure; Docker/Terraform; Postgres/MySQL/Mongo/Redis)",
-        "Governance & compliance: GDPR, COPPA, PCI, SOC-2; secure cloud CI/CD and data practices",
-        "Partnership growth with global brands (Wizards of the Coast, Red Bull); product-led growth and cross-functional leadership"
+        "Scaled Melee.gg to 400K+ users, ~70K MAU, ~13K organizer partners",
+        "Architected 2M+ LOC multi-tenant SaaS with real-time analytics, multilingual UX, PCI-aware payments",
+        "OpenAI-powered analytics & automation to reduce operational workload",
+        "Exec leadership + hands-on (.NET, Java/Kotlin/Spring Boot, React/React Native, AWS/Azure; Docker/Terraform; Postgres/MySQL/Mongo/Redis)",
+        "Governance/compliance: GDPR, COPPA, PCI, SOC-2",
+        "Partnerships with global brands (Wizards of the Coast, Red Bull); PLG and cross-functional leadership",
     ],
 };
 
@@ -135,20 +136,19 @@ function sanitize(obj: any): FitResult {
 }
 
 /* ---------- CAPTCHA verify ---------- */
-async function verifyTurnstile(token?: string | null, req: NextRequest): Promise<boolean> {
+async function verifyTurnstile(token?: string | null, req?: NextRequest): Promise<boolean> {
     if (process.env.TURNSTILE_DISABLED === "1" || process.env.NEXT_PUBLIC_TURNSTILE_DISABLED === "1") {
         return true;
     }
     const secret = process.env.TURNSTILE_SECRET_KEY;
-    if (!secret) return false;
-    if (!token) return false;
+    if (!secret || !token) return false;
 
     // Best-effort client IP (optional)
     const ip =
-        (req.headers.get("cf-connecting-ip") ||
-            req.headers.get("x-real-ip") ||
-            req.headers.get("x-forwarded-for")?.split(",")[0] ||
-            undefined);
+        req?.headers.get("cf-connecting-ip") ||
+        req?.headers.get("x-real-ip") ||
+        req?.headers.get("x-forwarded-for")?.split(",")[0] ||
+        undefined;
 
     const body = new URLSearchParams();
     body.set("secret", secret);
@@ -163,7 +163,76 @@ async function verifyTurnstile(token?: string | null, req: NextRequest): Promise
 
     if (!r.ok) return false;
     const data = await r.json().catch(() => ({}));
-    return !!data.success;
+    return !!(data as any).success;
+}
+
+/* ---------- Notify (email) ---------- */
+const resend = new Resend(process.env.RESEND_API_KEY || "");
+
+function shouldNotify(result: FitResult) {
+    if (process.env.FIT_NOTIFY_ENABLED !== "1") return false;
+    const min = Number(process.env.FIT_NOTIFY_MIN_SCORE ?? "80");
+    if (result.verdict === "yes") return true;
+    if (!Number.isNaN(min) && result.score >= min) return true;
+    return false;
+}
+
+async function sendFitEmail(args: {
+    result: FitResult;
+    jd: string;
+    source: "upload" | "paste" | "both";
+}) {
+    const from = process.env.CONTACT_FROM;
+    const to = process.env.CONTACT_TO;
+    if (!resend || !process.env.RESEND_API_KEY || !from || !to) return;
+
+    const {result, jd, source} = args;
+    const jdSnippet = jd.slice(0, 800);
+    const subject = `Fit alert — ${result.score} (${result.verdict.toUpperCase()}) — Role fit check`;
+
+    const text =
+        `Role Fit Check — ${new Date().toISOString()}
+
+Verdict: ${result.verdict.toUpperCase()}
+Score:   ${result.score}
+Source:  ${source}
+
+Rationale:
+${result.rationale}
+
+Top strengths:
+- ${(result.strengths[0] ?? "")}
+- ${(result.strengths[1] ?? "")}
+- ${(result.strengths[2] ?? "")}
+
+Top gaps:
+- ${(result.gaps[0] ?? "")}
+- ${(result.gaps[1] ?? "")}
+- ${(result.gaps[2] ?? "")}
+
+Suggested résumé bullets:
+${result.resume_bullets.map(b => `- ${b}`).join("\n")}
+
+Tags: ${result.tags.join(", ")}
+
+Cover-letter opener:
+${result.cover_letter_opener}
+
+JD (snippet):
+${jdSnippet}
+— jasonflatford.com`;
+
+    try {
+        await resend.emails.send({
+            from,
+            to,
+            subject,
+            text,
+        });
+    } catch (e) {
+        // Swallow email errors; don't block the API response
+        console.error("[/api/fit] email send failed:", e);
+    }
 }
 
 /* ---------- Handler ---------- */
@@ -179,7 +248,11 @@ export async function POST(req: NextRequest) {
 
         // CAPTCHA gate
         const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-        const mustCheck = !!siteKey && process.env.TURNSTILE_DISABLED !== "1" && process.env.NEXT_PUBLIC_TURNSTILE_DISABLED !== "1";
+        const mustCheck =
+            !!siteKey &&
+            process.env.TURNSTILE_DISABLED !== "1" &&
+            process.env.NEXT_PUBLIC_TURNSTILE_DISABLED !== "1";
+
         if (mustCheck) {
             const ok = await verifyTurnstile(token, req);
             if (!ok) {
@@ -192,9 +265,11 @@ export async function POST(req: NextRequest) {
         }
 
         let jd = pasted.trim();
+        let source: "upload" | "paste" | "both" = jd ? "paste" : "upload";
         if (file) {
             const extracted = await readFileText(file);
             jd = `${jd}\n\n${extracted}`.trim();
+            source = pasted && extracted ? "both" : file ? "upload" : "paste";
         }
 
         if (jd.length < 200) {
@@ -220,7 +295,8 @@ export async function POST(req: NextRequest) {
                 Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: "gpt-5",
+                model: "gpt-4o-mini",
+                temperature: 0.2,
                 response_format: {type: "json_object"},
                 messages: [
                     {role: "system", content: SYSTEM_PROMPT},
@@ -245,6 +321,14 @@ export async function POST(req: NextRequest) {
         }
 
         const result = sanitize(parsed);
+
+        // Fire-and-forget notify (don’t block response)
+        if (shouldNotify(result)) {
+            // no need to await; but do not let promise rejection crash handler
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            sendFitEmail({result, jd, source});
+        }
+
         return NextResponse.json(result);
     } catch (err: any) {
         console.error("[/api/fit] error:", err);
