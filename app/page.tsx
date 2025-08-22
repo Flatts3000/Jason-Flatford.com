@@ -3,11 +3,13 @@ import {CTASection} from "@/components/CTASection";
 import SignatureOutcomes from "@/components/SignatureOutcomes";
 import FeaturedCaseStudies from "@/components/FeaturedCaseStudies";
 import TrustedBy from "@/components/TrustedBy";
+import FitWidget from "@/components/FitWidget";
 
 export default function Page() {
     return (
         <>
             <Hero/>
+            <FitWidget/>
             <SignatureOutcomes/>
             <FeaturedCaseStudies/>
             <TrustedBy/>
