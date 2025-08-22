@@ -7,6 +7,34 @@ import {ALL_TAGS, EVENTS, type TimelineEvent} from "./data";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUpRightFromSquare, faCalendarDays, faFileArrowDown, faFilter, faMagnifyingGlass, faXmark,} from "@fortawesome/free-solid-svg-icons";
 
+/* ---------- Date helpers: parse YYYY-MM(-DD) as LOCAL (avoid UTC month shift) ---------- */
+function parseLocalYMD(input: string): Date {
+    // Supports "YYYY", "YYYY-MM", "YYYY-MM-DD"
+    const m = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(input);
+    if (m) {
+        const y = Number(m[1]);
+        const mon = m[2] ? Number(m[2]) - 1 : 0;
+        const day = m[3] ? Number(m[3]) : 1;
+        // Noon avoids DST edges better than midnight.
+        return new Date(y, mon, day, 12, 0, 0, 0);
+    }
+    // Fallback: whatever was provided (e.g., full ISO or Date-compatible string)
+    return new Date(input);
+}
+
+function formatMonthYearLocal(d: Date) {
+    return d.toLocaleString(undefined, {month: "short", year: "numeric"});
+}
+
+function formatDateAttr(d: Date) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+}
+
+/* -------------------------------------------------------------------------- */
+
 const RATIO_CLASS: Record<
     NonNullable<NonNullable<TimelineEvent["images"]>[number]["ratio"]>,
     string
@@ -17,7 +45,7 @@ const RATIO_CLASS: Record<
 };
 
 function byDateDesc(a: TimelineEvent, b: TimelineEvent) {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    return parseLocalYMD(b.date).getTime() - parseLocalYMD(a.date).getTime();
 }
 
 /** Accessible modal for enlarged media (images only; never for logos). */
@@ -65,11 +93,7 @@ function MediaModal({
             aria-label="Image preview"
             onClick={onClose}
         >
-            <div
-                className={styles.modal}
-                onClick={(e) => e.stopPropagation()}
-                role="document"
-            >
+            <div className={styles.modal} onClick={(e) => e.stopPropagation()} role="document">
                 <button
                     ref={closeRef}
                     type="button"
@@ -80,14 +104,7 @@ function MediaModal({
                     <FontAwesomeIcon icon={faXmark}/>
                 </button>
                 <div className={styles.modalImgWrap}>
-                    <Image
-                        src={src}
-                        alt={alt || ""}
-                        fill
-                        sizes="90vw"
-                        className={styles.modalImg}
-                        priority
-                    />
+                    <Image src={src} alt={alt || ""} fill sizes="90vw" className={styles.modalImg} priority/>
                 </div>
             </div>
         </div>
@@ -141,7 +158,7 @@ export default function TimelineClient() {
     const groupsMap = useMemo(() => {
         const map = new Map<number, TimelineEvent[]>();
         for (const e of filtered) {
-            const y = new Date(e.date).getFullYear();
+            const y = parseLocalYMD(e.date).getFullYear();
             if (!map.has(y)) map.set(y, []);
             map.get(y)!.push(e);
         }
@@ -152,7 +169,7 @@ export default function TimelineClient() {
     const firstEventYear = useMemo(() => {
         const all = [...EVENTS].sort(byDateDesc);
         if (all.length === 0) return new Date().getFullYear();
-        return new Date(all[all.length - 1].date).getFullYear(); // oldest
+        return parseLocalYMD(all[all.length - 1].date).getFullYear(); // oldest
     }, []);
     const currentYear = new Date().getFullYear();
 
@@ -161,12 +178,6 @@ export default function TimelineClient() {
         for (let y = currentYear; y >= firstEventYear; y--) years.push(y);
         return years;
     }, [currentYear, firstEventYear]);
-
-    const visibleGroups = useMemo(() => {
-        return Array.from(groupsMap.entries())
-            .sort((a, b) => b[0] - a[0])
-            .map(([year, items]) => ({year, items}));
-    }, [groupsMap]);
 
     return (
         <section className={styles.section} aria-labelledby="timeline-title">
@@ -177,8 +188,8 @@ export default function TimelineClient() {
                         Professional timeline & milestones
                     </h1>
                     <p className={styles.lede}>
-                        Key launches, scale moments, partnerships, and speaking. Privacy-safe
-                        aggregates where needed; detailed numbers available under NDA.
+                        Key launches, scale moments, partnerships, and speaking. Privacy-safe aggregates where
+                        needed; detailed numbers available under NDA.
                     </p>
                 </div>
 
@@ -227,7 +238,7 @@ export default function TimelineClient() {
 
                 <div className={styles.actions}>
                     <a
-                        href="https://calendly.com/flatts-scg"
+                        href="https://calendly.com/flatts-scg/15-minute-intro"
                         className="btn btn-primary"
                         aria-label="Book a 15-minute intro via Calendly"
                     >
@@ -258,7 +269,6 @@ export default function TimelineClient() {
 
                 {/* TIMELINE */}
                 <ol className={styles.timeline} role="list">
-                    {/* Invisible anchors for empty years so the left menu always scrolls somewhere */}
                     {allYearsDesc.map((y) => {
                         const group = groupsMap.get(y);
                         if (group && group.length) {
@@ -271,33 +281,17 @@ export default function TimelineClient() {
                                     <ol className={styles.items} role="list">
                                         {group.map((e) => {
                                             const imgs = e.images ?? [];
+                                            const hasLogo = Boolean(e.logo);
+                                            const d = parseLocalYMD(e.date);
+
                                             return (
                                                 <li key={e.id} className={styles.item}>
                                                     <div className={styles.dot} aria-hidden="true"/>
                                                     <article className={styles.card} aria-labelledby={`${e.id}-title`}>
-                                                        {/* Logo row — larger, responsive, preserves non-square ratios */}
-                                                        {e.logo ? (
-                                                            <div className={styles.logoBar}>
-                                                                <img
-                                                                    src={e.logo}
-                                                                    alt=""
-                                                                    aria-hidden="true"
-                                                                    className={styles.logoImg}
-                                                                    loading="lazy"
-                                                                    onError={(ev) => {
-                                                                        (ev.currentTarget as HTMLImageElement).style.display = "none";
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                        ) : null}
-
-                                                        {/* Meta + copy */}
+                                                        {/* Meta row stays full width */}
                                                         <div className={styles.metaRow}>
-                                                            <time dateTime={e.date} className={styles.time}>
-                                                                {new Date(e.date).toLocaleString(undefined, {
-                                                                    month: "short",
-                                                                    year: "numeric",
-                                                                })}
+                                                            <time dateTime={formatDateAttr(d)} className={styles.time}>
+                                                                {formatMonthYearLocal(d)}
                                                             </time>
                                                             <ul className={styles.tags} role="list">
                                                                 {e.tags.map((t) => (
@@ -308,63 +302,106 @@ export default function TimelineClient() {
                                                             </ul>
                                                         </div>
 
-                                                        <h2 id={`${e.id}-title`} className={styles.h2}>
-                                                            {e.title}
-                                                        </h2>
-                                                        {e.summary ? <p className={styles.summary}>{e.summary}</p> : null}
+                                                        {/* Title/summary row: logo on left, copy on right */}
+                                                        <div
+                                                            className={`${styles.titleRow} ${
+                                                                hasLogo ? styles.titleRowWithLogo : styles.titleRowNoLogo
+                                                            }`}
+                                                        >
+                                                            {hasLogo ? (
+                                                                <div className={styles.logoCol}>
+                                                                    <img
+                                                                        src={e.logo!}
+                                                                        alt=""
+                                                                        aria-hidden="true"
+                                                                        className={styles.logoImg}
+                                                                        loading="lazy"
+                                                                        onError={(ev) => {
+                                                                            (ev.currentTarget as HTMLImageElement).style.display = "none";
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            ) : null}
 
-                                                        {e.links?.length ? (
-                                                            <div className={styles.links}>
-                                                                {e.links.map((l) => (
-                                                                    <a
-                                                                        key={l.href}
-                                                                        href={l.href}
-                                                                        target="_blank"
-                                                                        rel="noopener noreferrer"
-                                                                        className={styles.link}
-                                                                    >
-                                                                        {l.label}{" "}
-                                                                        <FontAwesomeIcon icon={faArrowUpRightFromSquare}/>
-                                                                    </a>
-                                                                ))}
-                                                            </div>
-                                                        ) : null}
+                                                            <div className={styles.titleCol}>
+                                                                <h2 id={`${e.id}-title`} className={styles.h2}>
+                                                                    {e.title}
+                                                                </h2>
+                                                                {e.summary ? <p className={styles.summary}>{e.summary}</p> : null}
 
-                                                        {/* Images BELOW the copy — clicking opens modal */}
-                                                        {imgs.length > 0 && (
-                                                            <div
-                                                                className={styles.mediaGrid}
-                                                                role="group"
-                                                                aria-label={`Images for ${e.title}`}
-                                                            >
-                                                                {imgs.map((m, i) => {
-                                                                    const ratioClass = m.ratio ? RATIO_CLASS[m.ratio] : "";
-                                                                    const alt = m.alt || "";
-                                                                    return (
-                                                                        <div
-                                                                            key={`${e.id}-img-${i}`}
-                                                                            className={`${styles.mediaItem} ${ratioClass}`}
-                                                                        >
-                                                                            <button
-                                                                                type="button"
-                                                                                className={styles.mediaBtn}
-                                                                                onClick={() => openModal(m.src, alt)}
-                                                                                aria-label="Open larger view"
+                                                                {e.links?.length ? (
+                                                                    <div className={styles.links}>
+                                                                        {e.links.map((l) => (
+                                                                            <a
+                                                                                key={l.href}
+                                                                                href={l.href}
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                                className={styles.link}
                                                                             >
-                                                                                <Image
-                                                                                    src={m.src}
-                                                                                    alt={alt}
-                                                                                    fill
-                                                                                    sizes="(min-width:1100px) 720px, 100vw"
-                                                                                    className={styles.mediaImgContain}
-                                                                                    priority={false}
-                                                                                />
-                                                                            </button>
-                                                                        </div>
-                                                                    );
-                                                                })}
+                                                                                {l.label} <FontAwesomeIcon icon={faArrowUpRightFromSquare}/>
+                                                                            </a>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
+
+                                                                {/* Images BELOW everything — clicking opens modal */}
+                                                                {imgs.length > 0 && (
+                                                                    <div
+                                                                        className={styles.mediaGrid}
+                                                                        role="group"
+                                                                        aria-label={`Images for ${e.title}`}
+                                                                    >
+                                                                        {imgs.map((m, i) => {
+                                                                            const ratioClass = m.ratio ? RATIO_CLASS[m.ratio] : "";
+                                                                            const alt = m.alt || "";
+                                                                            const anyM = m as unknown as {
+                                                                                maxWidth?: number | string;
+                                                                                maxImageWidth?: number | string;
+                                                                            };
+                                                                            const rawMax =
+                                                                                anyM?.maxWidth ?? anyM?.maxImageWidth ?? undefined;
+                                                                            const cssMax =
+                                                                                rawMax == null
+                                                                                    ? undefined
+                                                                                    : typeof rawMax === "number"
+                                                                                        ? `${rawMax}px`
+                                                                                        : String(rawMax);
+
+                                                                            return (
+                                                                                <div
+                                                                                    key={`${e.id}-img-${i}`}
+                                                                                    className={`${styles.mediaItem} ${ratioClass}`}
+                                                                                    style={
+                                                                                        cssMax
+                                                                                            ? ({
+                                                                                                ["--img-maxw" as any]: cssMax,
+                                                                                            } as React.CSSProperties)
+                                                                                            : undefined
+                                                                                    }
+                                                                                >
+                                                                                    <button
+                                                                                        type="button"
+                                                                                        className={styles.mediaBtn}
+                                                                                        onClick={() => openModal(m.src, alt)}
+                                                                                        aria-label="Open larger view"
+                                                                                    >
+                                                                                        <Image
+                                                                                            src={m.src}
+                                                                                            alt={alt}
+                                                                                            fill
+                                                                                            sizes="(min-width:1100px) 720px, 100vw"
+                                                                                            className={styles.mediaImgContain}
+                                                                                            priority={false}
+                                                                                        />
+                                                                                    </button>
+                                                                                </div>
+                                                                            );
+                                                                        })}
+                                                                    </div>
+                                                                )}
                                                             </div>
-                                                        )}
+                                                        </div>
                                                     </article>
                                                 </li>
                                             );

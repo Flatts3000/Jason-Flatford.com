@@ -263,23 +263,54 @@
     outline-offset: 2px;
 }
 
-/* Logo row — larger, responsive, non-square friendly */
-.logoBar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    min-height: clamp(64px, 4.5vw, 120px);
+/* ── Title row: logo left of H2/P; meta row above ───────────── */
+.titleRow {
+    display: grid;
+    column-gap: 12px;
+    align-items: start;
+    margin-top: 2px;
 }
 
+/* Bigger, still disciplined logo size */
+.titleRowWithLogo {
+    --logo-col: clamp(32px, 4vw, 64px); /* was 18–28px */
+    grid-template-columns: var(--logo-col) 1fr;
+}
+
+@media (min-width: 1280px) {
+    .titleRowWithLogo {
+        --logo-col: clamp(40px, 3.5vw, 72px);
+    }
+}
+
+.titleRowNoLogo {
+    grid-template-columns: 1fr;
+}
+
+.logoCol {
+    width: var(--logo-col);
+    height: var(--logo-col);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleCol {
+    min-width: 0;
+}
+
+/* Normalize & de-emphasize logos next to title */
 .logoImg {
-    display: block;
-    height: clamp(64px, 4.5vw, 120px); /* bigger logo */
-    width: auto; /* preserve aspect ratio */
-    max-width: 100%;
-    object-fit: contain; /* safety for SVG-to-raster edge cases */
-    background: transparent; /* avoid white box on transparent logos */
-    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .05));
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) saturate(0.7) opacity(.82);
+    transition: filter .18s ease, opacity .18s ease;
+}
+
+.card:hover .logoImg,
+.card:focus-within .logoImg {
+    filter: grayscale(85%) saturate(.85) opacity(.9);
 }
 
 /* Meta & text */
@@ -288,6 +319,7 @@
     gap: 10px;
     align-items: baseline;
     flex-wrap: wrap;
+    margin-bottom: 6px;
 }
 
 .time {
@@ -361,7 +393,7 @@
     }
 }
 
-/* --- Media grid (images below copy; no crop) --- */
+/* --- Media grid (images below copy; supports per-image max width) --- */
 .mediaGrid {
     display: grid;
     gap: 8px;
@@ -375,11 +407,14 @@
     }
 }
 
+/* Per-image max width via CSS var; centered when narrower than the column */
 .mediaItem {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
     background: #f6f7fb;
+    width: min(100%, var(--img-maxw, 100%));
+    justify-self: center;
 }
 
 .mediaBtn {
