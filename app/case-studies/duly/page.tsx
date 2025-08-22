@@ -1,14 +1,10 @@
-/* Duly case study — refined with persona pages (Constituent/Official/Staff/Observer)
-   Route: /case-studies/duly
-*/
-
 import Link from "next/link";
 import styles from "./DulyCaseStudy.module.css";
 
 export const metadata = {
-    title: "Duly Case Study — Authenticated Civic Workflows",
+    title: "Duly Case Study — Verified Voices, AI Summaries, Public Transparency",
     description:
-        "Duly authenticates locals and turns natural-language requests into governed, auditable workflows for civic operations — product thesis, architecture, outcomes, and roadmap.",
+        "Duly verifies constituents, summarizes messages with AI for staff, and publishes anonymized trends for the public — product thesis, MVP scope, principles, risks, and validation plan.",
 };
 
 export default function DulyCaseStudyPage() {
@@ -21,18 +17,18 @@ export default function DulyCaseStudyPage() {
                 <div className={styles.heroCopy}>
                     <p className={styles.kicker}>Case study</p>
                     <h1 id="title" className={styles.title}>
-                        Duly — authenticated, AI-assisted workflows for civic operations
+                        Duly — verified constituent voices, AI-assisted summaries, and transparent dashboards
                     </h1>
                     <p className={styles.subtitle}>
-                        Authenticates local senders, transforms free-text into structured tickets, routes by policy and SLA,
-                        and keeps residents, staff, and elected offices aligned — with full audit and public transparency.
+                        In modern democracies, real constituent input is buried by spam, mass campaigns, and fragmented channels.
+                        Duly restores the civic feedback loop: verify the messenger, structure the message, and make the response visible.
                     </p>
 
                     <ul className={styles.badges} role="list">
                         <li className={styles.badge}>Pre-alpha (soft launch • Jul 2025)</li>
-                        <li className={styles.badge}>Multi-tenant SaaS</li>
-                        <li className={styles.badge}>AI-assisted workflows</li>
-                        <li className={styles.badge}>Verified-Local filter</li>
+                        <li className={styles.badge}>Verified constituents</li>
+                        <li className={styles.badge}>AI topic/sentiment/urgency</li>
+                        <li className={styles.badge}>Public transparency portal</li>
                     </ul>
 
                     <div className={styles.heroCTAs}>
@@ -50,27 +46,23 @@ export default function DulyCaseStudyPage() {
                     <dl className={styles.factsGrid}>
                         <div>
                             <dt>Role</dt>
-                            <dd>Founder / Product & Tech Lead</dd>
+                            <dd>Founder & CEO</dd>
                         </div>
                         <div>
                             <dt>Primary users</dt>
-                            <dd>Residents, office staffers, elected officials; public observers</dd>
+                            <dd>Constituents, staffers, elected officials; public observers</dd>
                         </div>
                         <div>
-                            <dt>Top use cases</dt>
-                            <dd>Service requests, work orders, constituent comms, public transparency</dd>
+                            <dt>Core loop</dt>
+                            <dd>Verify → Summarize/Cluster → Prioritize/Act → Publish trends</dd>
                         </div>
                         <div>
-                            <dt>Differentiators</dt>
-                            <dd>Authenticated senders • Verified-Local filter • Safe-handling lane</dd>
+                            <dt>Principles</dt>
+                            <dd>Verified voices • Privacy-first • Nonpartisan transparency • AI assists people</dd>
                         </div>
                         <div>
-                            <dt>Leadership views</dt>
-                            <dd>Trends & district map • Queue health • SLA performance</dd>
-                        </div>
-                        <div>
-                            <dt>Privacy posture</dt>
-                            <dd>PII redaction • Audit log • Anonymized observer view</dd>
+                            <dt>Status</dt>
+                            <dd>MVP in progress; pilot recruitment open</dd>
                         </div>
                     </dl>
                 </aside>
@@ -80,236 +72,233 @@ export default function DulyCaseStudyPage() {
                 {/* STICKY TOC */}
                 <nav className={styles.toc} aria-label="Sections">
                     <ol>
+                        <li><a href="#overview">Overview</a></li>
                         <li><a href="#problem">Problem</a></li>
-                        <li><a href="#outcomes">Outcomes</a></li>
-                        <li><a href="#solution">Solution</a></li>
-                        <li><a href="#personas">By persona</a></li>
-                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#personas">Who it serves</a></li>
+                        <li><a href="#principles">Product principles</a></li>
+                        <li><a href="#mvp">What ships in the MVP</a></li>
+                        <li><a href="#solution">How it works</a></li>
+                        <li><a href="#metrics">Success metrics</a></li>
+                        <li><a href="#architecture">Architecture & feasibility</a></li>
+                        <li><a href="#risks">Risks & mitigations</a></li>
                         <li><a href="#ownership">What I owned</a></li>
-                        <li><a href="#demo">Demo</a></li>
-                        <li><a href="#results">Early results</a></li>
-                        <li><a href="#security">Security & compliance</a></li>
-                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#cta">Pilot</a></li>
                     </ol>
                 </nav>
 
                 {/* MAIN CONTENT */}
                 <article className={styles.content}>
-                    <section id="problem" aria-labelledby="problem-h">
-                        <h2 id="problem-h" className={styles.h2}>Problem & context</h2>
+                    {/* OVERVIEW */}
+                    <section id="overview" aria-labelledby="overview-h">
+                        <h2 id="overview-h" className={styles.h2}>Executive overview</h2>
                         <p className={styles.lede}>
-                            Requests land across phones, inboxes, web forms, and social. Teams re-type data, hand-route,
-                            and lose status visibility. Threats and harassment complicate safe handling and compliance.
+                            Duly is a civic engagement platform that verifies constituent identity, turns natural-language input into
+                            structured insight for staff, and publishes anonymized district trends so the public can see where issues stand.
                         </p>
                         <ul className={styles.list}>
-                            <li><strong>Residents:</strong> confusing entry points; uncertain status; slow first response.</li>
-                            <li><strong>Staff:</strong> manual classification and routing; no unified view; difficult handoffs.</li>
-                            <li><strong>Leaders:</strong> poor observability on queues, SLAs, and district-level trends.</li>
-                            <li><strong>Public:</strong> wants transparency without exposing personal data.</li>
+                            <li><strong>Verified voices:</strong> residency check + one-time code; district routing.</li>
+                            <li><strong>AI summaries, not decisions:</strong> topic, sentiment, urgency, deduplication; staff stay in control.</li>
+                            <li><strong>Transparency:</strong> a public portal shows anonymized issue trends and official responses.</li>
+                            <li><strong>Privacy by design:</strong> no public PII; redaction and audit trail across the pipeline.</li>
                         </ul>
                     </section>
 
-                    <section id="outcomes" aria-labelledby="outcomes-h">
-                        <h2 id="outcomes-h" className={styles.h2}>Target outcomes (pilot goals)</h2>
+                    {/* PROBLEM */}
+                    <section id="problem" aria-labelledby="problem-h">
+                        <h2 id="problem-h" className={styles.h2}>Problem</h2>
+                        <p className={styles.lede}>
+                            Offices are swamped with unverified, unstructured messages. Real constituent voices are diluted; staff rely on
+                            filters and scripts; the public can’t see if concerns led to action.
+                        </p>
+                        <ul className={styles.list}>
+                            <li><strong>Fragmented channels:</strong> email, web forms, calls, social DMs — no unified intake.</li>
+                            <li><strong>No verification:</strong> offices can’t trust residency or constituency at scale.</li>
+                            <li><strong>Low signal-to-noise:</strong> mass campaigns/bots bury everyday residents.</li>
+                            <li><strong>Opaque outcomes:</strong> citizens rarely see if/when an issue is addressed.</li>
+                        </ul>
+                    </section>
+
+                    {/* PERSONAS */}
+                    <section id="personas" aria-labelledby="personas-h">
+                        <h2 id="personas-h" className={styles.h2}>Who it serves</h2>
+                        <div className={styles.twoCol}>
+                            <div>
+                                <h3 className={styles.h3}>Constituents</h3>
+                                <ul className={styles.list}>
+                                    <li>One verified place to be heard by the correct office.</li>
+                                    <li>See how your input contributes to district trends.</li>
+                                    <li>Opt-in follow-ups when leaders respond or act.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className={styles.h3}>Politicians & staff</h3>
+                                <ul className={styles.list}>
+                                    <li>Noise-free inbox: verified messages, clustered by topic/sentiment/urgency.</li>
+                                    <li>Dashboards to detect emerging issues and track response SLAs.</li>
+                                    <li>Publish official responses to the public portal with one click.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.card} style={{marginTop: 12}}>
+                            <h3 className={styles.h3}>General public</h3>
+                            <ul className={styles.list}>
+                                <li>District-level, anonymized summaries of what people raise.</li>
+                                <li>See responsiveness over time without exposing personal data.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    {/* PRINCIPLES */}
+                    <section id="principles" aria-labelledby="principles-h">
+                        <h2 id="principles-h" className={styles.h2}>Product principles</h2>
+                        <ul className={styles.list}>
+                            <li><strong>Verified voices only:</strong> input counts after residency verification.</li>
+                            <li><strong>Privacy-first:</strong> PII is redacted; public data is aggregated and anonymized.</li>
+                            <li><strong>Transparency without partisanship:</strong> issue- and data-driven, not editorial.</li>
+                            <li><strong>AI as a tool:</strong> assists with summaries; humans decide and publish.</li>
+                            <li><strong>Build for trust, not engagement metrics:</strong> fast, respectful UX — finish in under 5 minutes.</li>
+                        </ul>
+                    </section>
+
+                    {/* MVP SCOPE */}
+                    <section id="mvp" aria-labelledby="mvp-h">
+                        <h2 id="mvp-h" className={styles.h2}>What ships in the MVP</h2>
+                        <div className={styles.twoCol}>
+                            <div>
+                                <h3 className={styles.h3}>Included</h3>
+                                <ul className={styles.list}>
+                                    <li>Constituent verification (ZIP + email/SMS; optional higher assurance).</li>
+                                    <li>Message intake (structured prompts, free text, voice-to-text).</li>
+                                    <li>AI summarization: topic, sentiment, urgency; deduplication and spam guard.</li>
+                                    <li>Staff dashboard: clusters, filters, message review, “needs reply/escalate”.</li>
+                                    <li>Public portal: anonymized trends, published responses.</li>
+                                    <li>Notifications: follow-ups on topics users care about.</li>
+                                    <li>Accessibility (WCAG 2.1+), mobile-first layout.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className={styles.h3}>Out of scope (Phase 2+)</h3>
+                                <ul className={styles.list}>
+                                    <li>Mass outreach campaigns, real-time chat.</li>
+                                    <li>Advanced analytics beyond core trends.</li>
+                                    <li>Full voter-roll integrations; multilingual beyond English.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* HOW IT WORKS */}
+                    <section id="solution" aria-labelledby="solution-h">
+                        <h2 id="solution-h" className={styles.h2}>How it works (pipeline)</h2>
+                        <p className={styles.note}>
+                            Verify the sender → structure the message → route by policy/SLA → staff act → publish anonymized outcomes.
+                        </p>
+
+                        <div className={styles.twoCol}>
+                            <div>
+                                <h3 className={styles.h3}>For staff</h3>
+                                <ul className={styles.list}>
+                                    <li>Verified, deduped inbox with safe-handling lane for threats.</li>
+                                    <li>Clusters show volume, sentiment, subtopics, and urgency.</li>
+                                    <li>Publish official responses to close the loop publicly.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className={styles.h3}>For constituents</h3>
+                                <ul className={styles.list}>
+                                    <li>Simple input; clear confirmation; optional follow-ups.</li>
+                                    <li>See how your message contributes to district-level trends.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* METRICS */}
+                    <section id="metrics" aria-labelledby="metrics-h">
+                        <h2 id="metrics-h" className={styles.h2}>Success metrics (pilot targets)</h2>
                         <div className={styles.statsGrid} role="group" aria-label="Target KPIs">
+                            <div className={styles.statCard}>
+                                <div className={styles.statNumber}>↑ verification</div>
+                                <div className={styles.statLabel}>% verified users submitting monthly</div>
+                            </div>
                             <div className={styles.statCard}>
                                 <div className={styles.statNumber}>&lt; 24h</div>
                                 <div className={styles.statLabel}>Time-to-first-response</div>
                             </div>
                             <div className={styles.statCard}>
-                                <div className={styles.statNumber}>-50%</div>
+                                <div className={styles.statNumber}>−50%</div>
                                 <div className={styles.statLabel}>Time-to-resolution</div>
                             </div>
                             <div className={styles.statCard}>
                                 <div className={styles.statNumber}>30–60%</div>
-                                <div className={styles.statLabel}>Automation on common requests</div>
+                                <div className={styles.statLabel}>Automation/deflection on common requests</div>
                             </div>
                             <div className={styles.statCard}>
-                                <div className={styles.statNumber}>↑ CSAT</div>
-                                <div className={styles.statLabel}>Proactive status & clear comms</div>
+                                <div className={styles.statNumber}>↑ transparency</div>
+                                <div className={styles.statLabel}>% feedback summarized & published</div>
                             </div>
                         </div>
-                        <p className={styles.caption}>Metrics are pilot targets; production figures available under NDA.</p>
+                        <p className={styles.caption}>Additional measures: NPS (constituents & staff), model accuracy vs. human review, public dashboard engagement.</p>
                     </section>
 
-                    <section id="solution" aria-labelledby="solution-h">
-                        <h2 id="solution-h" className={styles.h2}>Solution overview</h2>
-                        <div className={styles.twoCol}>
-                            <div>
-                                <h3 className={styles.h3}>Intake & authentication</h3>
-                                <ul className={styles.list}>
-                                    <li>Natural-language intake (web/email/SMS) → structured ticket in one click.</li>
-                                    <li>Authenticated senders; **Verified-Local** filter to prioritize constituents.</li>
-                                </ul>
-
-                                <h3 className={styles.h3}>Routing & execution</h3>
-                                <ul className={styles.list}>
-                                    <li>Policy-based routing, SLA calendars, and queue load-balancing.</li>
-                                    <li>Unified inbox with priority highlighting and a safe-handling lane for threats/harassment.</li>
-                                    <li>Human + automation steps; approvals, escalations, and internal summaries.</li>
-                                </ul>
-
-                                <h3 className={styles.h3}>Comms, trends & transparency</h3>
-                                <ul className={styles.list}>
-                                    <li>Proactive resident updates; multilingual templates.</li>
-                                    <li>Leader views: trends and district map; queue and SLA performance.</li>
-                                    <li>Observer view: anonymized public signals — never personal data.</li>
-                                </ul>
-                            </div>
-
-                            <figure className={styles.figure}>
-                                <img
-                                    src="/images/case-studies/duly/pipeline.png"
-                                    alt="Duly pipeline: intake/auth → router/SLA → inbox/workflow → comms → audit → public signals"
-                                    className={styles.img}
-                                    loading="lazy"
-                                />
-                                <figcaption className={styles.caption}>
-                                    Intake/auth → router/SLA → inbox/workflow → comms → audit → public signals.
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </section>
-
-                    <section id="personas" aria-labelledby="persona-h">
-                        <h2 id="persona-h" className={styles.h2}>How it helps — by persona</h2>
-                        <div className={styles.twoCol}>
-                            <div>
-                                <h3 className={styles.h3}>Residents</h3>
-                                <ul className={styles.list}>
-                                    <li>One place to reach every level; we route to the right office.</li>
-                                    <li>Verified-Local priority without excluding non-locals.</li>
-                                    <li>Clear status updates and easy replies.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className={styles.h3}>Staff & Offices</h3>
-                                <ul className={styles.list}>
-                                    <li>Authenticated messages, unified inbox, safe-handling lane.</li>
-                                    <li>Bulk actions, exports, and records-ready audit logs.</li>
-                                    <li>Leader views for trends, districts, and SLA performance.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
+                    {/* ARCHITECTURE */}
                     <section id="architecture" aria-labelledby="arch-h">
-                        <h2 id="arch-h" className={styles.h2}>Architecture & AI approach</h2>
+                        <h2 id="arch-h" className={styles.h2}>Architecture & feasibility</h2>
                         <details className={styles.details}>
                             <summary className={styles.summaryHead}>High-level design (NDA-safe)</summary>
                             <div className={styles.detailsBody}>
                                 <ul className={styles.list}>
-                                    <li><strong>Multi-tenant:</strong> strict tenant isolation; per-tenant config & secrets.</li>
-                                    <li><strong>Orchestration:</strong> tool-augmented LLM flows with guardrails and fallbacks.</li>
-                                    <li><strong>Moderation:</strong> threat/harassment detection → safe-handling queue.</li>
-                                    <li><strong>Governance:</strong> PII redaction, hashed identifiers, immutable audit trail and export.</li>
-                                    <li><strong>Integrations:</strong> ticketing/CRM, email/SMS, GIS; phased rollout.</li>
-                                    <li><strong>Observability:</strong> structured logs and run-level tracing.</li>
+                                    <li><strong>Multi-tenant:</strong> strict tenant isolation; scoped access; per-district config.</li>
+                                    <li><strong>Verification:</strong> ZIP + email/SMS; optional higher-assurance integrations later.</li>
+                                    <li><strong>AI pipeline:</strong> topic clustering, sentiment/urgency, dedup/spam; human-in-the-loop for pilots.</li>
+                                    <li><strong>Governance:</strong> PII redaction, hashed IDs, immutable audit/export; WCAG 2.1+.</li>
+                                    <li><strong>Public data:</strong> anonymized aggregates streamed to the transparency portal.</li>
                                 </ul>
                             </div>
                         </details>
-                        <figure className={styles.figure}>
-                            <img
-                                src="/images/case-studies/duly/data-boundaries.png"
-                                alt="Data boundaries and tenant isolation surfaces with audit/export"
-                                className={styles.img}
-                                loading="lazy"
-                            />
-                            <figcaption className={styles.caption}>Data boundaries, tenant isolation, and export surfaces.</figcaption>
-                        </figure>
                     </section>
 
+                    {/* RISKS */}
+                    <section id="risks" aria-labelledby="risks-h">
+                        <h2 id="risks-h" className={styles.h2}>Risks & mitigations</h2>
+                        <div className={styles.twoCol}>
+                            <div>
+                                <ul className={styles.list}>
+                                    <li><strong>Identity & integrity:</strong> start simple; explore voter-file partnerships; log metadata for audit.</li>
+                                    <li><strong>AI accuracy:</strong> human review in pilots; confidence scores; flagging to improve models.</li>
+                                    <li><strong>Adoption:</strong> begin with willing offices; deliver clear value (weekly trend briefs).</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className={styles.list}>
+                                    <li><strong>Spam/abuse:</strong> verification, rate limits, heuristics; safe-handling lane for threats.</li>
+                                    <li><strong>Legal/ethical:</strong> privacy counsel; opt-in transparency; third-party audits where applicable.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* OWNERSHIP */}
                     <section id="ownership" aria-labelledby="own-h">
                         <h2 id="own-h" className={styles.h2}>What I owned</h2>
                         <ul className={styles.list}>
-                            <li>Product thesis and roadmap; user research with residents and offices.</li>
-                            <li>Architecture, prompting/tooling strategy, data model, auth/roles.</li>
-                            <li>UX for NL intake, unified inbox, status pages, and run log.</li>
-                            <li>Delivery leadership: CI/CD, infra posture, security review, incident playbooks.</li>
-                            <li>Pilot partnerships and success cadence with stakeholders.</li>
+                            <li>Product thesis, principles, and MVP scope; stakeholder interviews.</li>
+                            <li>Architecture and data governance; verification strategy; AI prompting & evaluation.</li>
+                            <li>UX for intake, cluster review, public transparency, and audit logs.</li>
+                            <li>Delivery leadership: CI/CD, security posture, incident playbooks, pilot success cadence.</li>
                         </ul>
                     </section>
 
-                    <section id="demo" aria-labelledby="demo-h">
-                        <h2 id="demo-h" className={styles.h2}>90-second demo</h2>
-                        <p className={styles.note}>
-                            Walkthrough: intake → verification → routing/SLA → inbox/safe-handling → comms → trends → audit → public view.
-                        </p>
-
-                        <video
-                            className={styles.video}
-                            controls
-                            preload="metadata"
-                            poster="/images/case-studies/duly/demo-poster.jpg"
-                        >
-                            <source src="/video/case-studies/duly-90sec.mp4" type="video/mp4"/>
-                            Your browser does not support the video tag.
-                        </video>
-
-                        <p className={styles.caption}>
-                            Prefer a script? <a href="/files/duly-demo-script.pdf">Download PDF</a> or use the Markdown below.
-                        </p>
-
-                        <details className={styles.details}>
-                            <summary className={styles.summaryHead}>Read the 90-second script</summary>
-                            <div className={styles.detailsBody}>
-                <pre style={{whiteSpace: "pre-wrap"}}>
-{`(See repository: /files/duly-demo-script.md or PDF)`}
-                </pre>
-                            </div>
-                        </details>
-                    </section>
-
-                    <section id="results" aria-labelledby="results-h">
-                        <h2 id="results-h" className={styles.h2}>Early results (pilot)</h2>
-                        <div className={styles.card}>
-                            <ul className={styles.list}>
-                                <li>Pilot scope: <em>[N depts, N request types]</em>.</li>
-                                <li>Throughput to date: <em>[N requests]</em>; correct auto-classification <em>[~X%]</em>.</li>
-                                <li>Human-in-the-loop rate: <em>[Y%]</em>; top deflections: <em>[examples]</em>.</li>
-                                <li>Leader usage: trends & district view consulted weekly; top actions taken.</li>
-                            </ul>
-                            <p className={styles.caption}>Replace bracketed values as data accrues; labels stay stable for longitudinal tracking.</p>
-                        </div>
-                    </section>
-
-                    <section id="security" aria-labelledby="sec-h">
-                        <h2 id="sec-h" className={styles.h2}>Security, privacy, compliance</h2>
-                        <ul className={styles.list}>
-                            <li>Encryption in transit/at rest; tenant-scoped secrets and keys.</li>
-                            <li>Records retention & export; FOIA/Public-records support.</li>
-                            <li>Model/data policy: no training on tenant data; prompts/responses logged with redaction.</li>
-                            <li>Accessibility (WCAG 2.2) and multilingual support.</li>
-                        </ul>
-                    </section>
-
-                    <section id="roadmap" aria-labelledby="road-h">
-                        <h2 id="road-h" className={styles.h2}>Roadmap</h2>
-                        <div className={styles.twoCol}>
-                            <div>
-                                <h3 className={styles.h3}>Next 60–90 days</h3>
-                                <ul className={styles.list}>
-                                    <li>SLA engine v2, safe-handling workflows, bulk actions.</li>
-                                    <li>Explain-my-status summaries; additional intake channels.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className={styles.h3}>Next 6 months</h3>
-                                <ul className={styles.list}>
-                                    <li>Leader analytics (trends/district deep-dives), KPI digests.</li>
-                                    <li>No-code playbooks and marketplace integrations.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section aria-labelledby="cta-h">
+                    {/* CTA */}
+                    <section id="cta" aria-labelledby="cta-h">
                         <h2 id="cta-h" className={styles.h2}>Pilot with Duly</h2>
                         <p className={styles.lede}>
-                            We’re inviting 2–3 additional pilot municipalities. If this could help your team, let’s talk.
+                            We’re inviting 5–10 additional pilot municipalities. If verified voices and transparent follow-through would help
+                            your community, let’s talk.
                         </p>
                         <div className={styles.heroCTAs}>
-                            <Link href="/contact" className={styles.btnPrimary}>Get in touch</Link>
+                            <Link href="https://dulyelected.org" className={styles.btnPrimary} target="_blank" rel="noopener noreferrer"> Visit dulyelected.org </Link>
+                            <Link href="/contact" className={styles.btnGhost}>Get in touch</Link>
                             <Link href="/case-studies/memnai" className={styles.btnGhost}>See Memnai (analytics)</Link>
                         </div>
                     </section>
