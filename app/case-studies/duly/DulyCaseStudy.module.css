@@ -301,3 +301,46 @@
 .backTop a:hover {
     text-decoration: underline;
 }
+
+/* --- Tables: lock column proportions & prevent overflow --- */
+.colLeft {
+    width: 54%;
+}
+
+.colRight {
+    width: 46%;
+}
+
+.compare {
+    overflow-x: auto;
+    margin-top: 6px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed; /* keep columns stable */
+    min-width: 640px; /* scroll horizontally if screen is very narrow */
+}
+
+.table th, .table td {
+    word-wrap: break-word;
+    overflow-wrap: anywhere; /* avoid long strings pushing layout */
+}
+
+/* --- Two-column helpers --- */
+.twoCol {
+    align-items: start;
+}
+
+/* stop vertical centering glitches */
+.twoColWideLeft {
+    grid-template-columns: 1.6fr 1fr; /* give the bullet list more room */
+}
+
+@media (max-width: 860px) {
+    .twoColWideLeft {
+        grid-template-columns: 1fr;
+    }
+}
