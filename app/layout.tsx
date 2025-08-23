@@ -2,16 +2,17 @@ import "./globals.css";
 import "./fontawesome";
 import {inter, jetbrains} from "./fonts";
 import type {ReactNode} from "react";
-import Link from "next/link";
 import CommandMenu from "@/components/CommandMenu";
 import ReadingProgress from "@/components/ReadingProgress";
 import SiteHeader from "@/components/SiteHeader";
 
 /* Stronger SEO + sharing + platform hints */
 export const metadata = {
-    metadataBase: new URL("https://jasonflatford.com"),
-    applicationName: "Jason Flatford — Portfolio",
-    authors: [{name: "Jason Flatford", url: "https://jasonflatford.com"}],
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.jasonflatford.com"),
+    applicationName: "Jason Flatford",
+    authors: [{name: "Jason Flatford", url: "https://www.jasonflatford.com"}],
+    creator: "Jason Flatford",
+    publisher: "Jason Flatford",
     keywords: [
         "Chief Product Officer",
         "VP of Product",
@@ -22,6 +23,7 @@ export const metadata = {
         "Esports",
         "Civic Tech",
         "Platform Scaling",
+        "Executive Leadership",
     ],
     alternates: {canonical: "/"},
     title: {
@@ -29,15 +31,15 @@ export const metadata = {
         template: "%s | Jason Flatford",
     },
     description:
-        "CPO/VP-level product & engineering leader. Scaled Melee.gg to 400k users, ~70k MAU, ~13k organizers. Executive + hands-on.",
+        "Product & technology leader (CPO/VP). Executive strategy + hands-on architecture for SaaS, AI, gaming, and civic tech. Built multi-tenant platforms, real-time analytics, and global event systems.",
     openGraph: {
         type: "website",
         locale: "en_US",
         siteName: "Jason Flatford",
-        url: "https://jasonflatford.com",
+        url: "/",
         title: "Jason Flatford — Product & Engineering Executive",
         description:
-            "CPO/VP-level product & engineering leader. Scaled Melee.gg to 400k users, ~70k MAU, ~13k organizers. Executive + hands-on.",
+            "Product & technology leader (CPO/VP). Executive strategy + hands-on architecture for SaaS, AI, gaming, and civic tech.",
         images: [
             {
                 url: "/og-image.png",
@@ -52,13 +54,16 @@ export const metadata = {
         card: "summary_large_image",
         title: "Jason Flatford — Product & Engineering Executive",
         description:
-            "Scaled Melee.gg to 400k users, ~70k MAU, ~13k organizers. Executive + hands-on.",
+            "Executive strategy + hands-on architecture for SaaS, AI, gaming, and civic tech.",
         images: ["/og-image.png"],
     },
     robots: {index: true, follow: true},
     icons: {
-        icon: "/favicon.ico",
-        apple: "/apple-touch-icon.png", // safe to leave; add when ready
+        icon: [
+            {url: "/favicon.ico", rel: "icon"},
+            {url: "/icon.png", type: "image/png", sizes: "512x512"},
+        ],
+        apple: [{url: "/apple-touch-icon.png", sizes: "180x180"}],
     },
 } as const;
 
@@ -67,7 +72,10 @@ export const viewport = {
     width: "device-width",
     initialScale: 1,
     viewportFit: "cover",
-    themeColor: "#0F2A6B", // navy action color (executive theme)
+    themeColor: [
+        {media: "(prefers-color-scheme: light)", color: "#1F4FFF"},
+        {media: "(prefers-color-scheme: dark)", color: "#0B122B"},
+    ],
 } as const;
 
 function Footer() {
@@ -109,7 +117,7 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <a href="#main" className="skip-link">
             Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader/>
         <main id="main" className="container main">
             {children}
         </main>
