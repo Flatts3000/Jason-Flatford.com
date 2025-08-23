@@ -344,3 +344,24 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Portrait gallery for phone screenshots --- */
+.portraitGrid {
+    display: grid;
+    gap: clamp(10px, 2.5vw, 18px);
+    /* 2 comfortable columns for tall phone images on desktop */
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    align-items: start;
+}
+
+@media (max-width: 880px) {
+    /* Single column on smaller viewports */
+    .portraitGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Helpful when captions run long */
+.figure {
+    overflow: hidden;
+}
