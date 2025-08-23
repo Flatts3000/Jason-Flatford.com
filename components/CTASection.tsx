@@ -35,6 +35,8 @@ export function CTASection() {
                         download="Jason-Flatford-Resume-2025-08.pdf"
                         className="btn btn-secondary"
                         aria-label="Download résumé as PDF"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <FontAwesomeIcon icon={faFileArrowDown} fixedWidth/>&nbsp;Download Résumé
                     </a>

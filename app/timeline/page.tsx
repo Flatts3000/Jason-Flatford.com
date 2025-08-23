@@ -249,6 +249,8 @@ export default function TimelineClient() {
                         href="/resume.pdf"
                         download="Jason-Flatford-Resume.pdf"
                         className="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label="Download résumé as PDF"
                     >
                         <FontAwesomeIcon icon={faFileArrowDown} fixedWidth/>

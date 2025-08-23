@@ -90,6 +90,8 @@ function Header() {
                                 href="/resume.pdf"
                                 download={"Jason-Flatford-Resume-2025-08.pdf"}
                                 aria-label="Download résumé (PDF)"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 Résumé
                             </Link>

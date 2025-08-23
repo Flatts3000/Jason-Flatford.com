@@ -33,6 +33,8 @@ export function Hero() {
                         download="Jason-Flatford-Resume-2025-08.pdf"
                         className="btn btn-secondary"
                         aria-label="Download résumé as PDF"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         Download Résumé
                     </a>
