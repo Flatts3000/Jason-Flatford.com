@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
             from: process.env.CONTACT_FROM!,
             to: process.env.CONTACT_TO!,
-            reply_to: email, // lets you reply directly to the sender
+            replyTo: email, // lets you reply directly to the sender
             subject: `New inquiry — ${name}${company ? ` @ ${company}` : ""}`,
             text:
                 `Name: ${name}\nEmail: ${email}\nCompany: ${company ?? ""}\n\n` +
