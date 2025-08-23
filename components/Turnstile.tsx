@@ -3,9 +3,10 @@
 import {useEffect, useRef} from 'react';
 
 type TurnstileAPI = {
-    render: (el: HTMLElement, opts: Record<string, any>) => string; // widget id
+    render: (el: HTMLElement, opts: Record<string, any>) => string;
     reset: (id?: string) => void;
     remove?: (id: string) => void;
+    getResponse?: (id: string) => string | null;
 };
 
 declare global {
@@ -31,13 +32,22 @@ export default function Turnstile({
                                       size = 'flexible',
                                       className,
                                   }: Props) {
-    const ref = useRef<HTMLDivElement | null>(null);
-    const widgetId = useRef<string | null>(null);
+    const elRef = useRef<HTMLDivElement | null>(null);
+    const widgetIdRef = useRef<string | null>(null);
 
-    // Ensure script is present (once)
+    // Keep latest callbacks without causing effect to re-run
+    const verifyRef = useRef(onVerify);
+    const expireRef = useRef(onExpire);
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-        if (window.turnstile) return;
+        verifyRef.current = onVerify;
+    }, [onVerify]);
+    useEffect(() => {
+        expireRef.current = onExpire;
+    }, [onExpire]);
+
+    // Load script once
+    useEffect(() => {
+        if (typeof window === 'undefined' || window.turnstile) return;
 
         const existing = document.querySelector<HTMLScriptElement>(
             'script[src^="https://challenges.cloudflare.com/turnstile/v0/api.js"]'
@@ -51,53 +61,82 @@ export default function Turnstile({
         document.head.appendChild(s);
     }, []);
 
+    // Render the widget; DO NOT depend on onVerify/onExpire here
     useEffect(() => {
         let canceled = false;
+        let pollId: number | null = null;
 
-        const tryRender = () => {
+        const render = () => {
             if (canceled || !window.turnstile) return;
 
-            // If we already rendered once, remove before re-render
-            if (widgetId.current && window.turnstile.remove) {
+            // If already rendered, avoid duplicate mounts
+            if (widgetIdRef.current && window.turnstile.remove) {
                 try {
-                    window.turnstile.remove(widgetId.current);
+                    window.turnstile.remove(widgetIdRef.current);
                 } catch {
                 }
-                widgetId.current = null;
+                widgetIdRef.current = null;
             }
 
-            const el = ref.current;
-            if (!el) return; // <-- Guard fixes TS2345
-            widgetId.current = window.turnstile.render(el as HTMLElement, {
-                sitekey: siteKey,           // Turnstile expects 'sitekey'
+            const el = elRef.current;
+            if (!el) return;
+
+            widgetIdRef.current = window.turnstile.render(el as HTMLElement, {
+                sitekey: siteKey,
                 theme,
                 size,
-                callback: (token: string) => onVerify(token),
-                'expired-callback': () => onExpire?.(),
-                'error-callback': () => onExpire?.(),
+                'refresh-expired': 'auto',
+                retry: 'auto',
+                // Helps if auto-verification stalls
+                appearance: 'interaction-only',
+                callback: (token: string) => {
+                    if (pollId) {
+                        clearInterval(pollId);
+                        pollId = null;
+                    }
+                    verifyRef.current?.(token);
+                },
+                'expired-callback': () => expireRef.current?.(),
+                'error-callback': () => expireRef.current?.(),
             });
+
+            // Safety net: poll token in case callback isn't fired
+            if (window.turnstile.getResponse && widgetIdRef.current) {
+                pollId = window.setInterval(() => {
+                    const id = widgetIdRef.current!;
+                    const token = window.turnstile!.getResponse!(id);
+                    if (token) {
+                        clearInterval(pollId!);
+                        pollId = null;
+                        verifyRef.current?.(token);
+                    }
+                }, 400);
+            }
         };
 
-        // Wait until the script finished loading
-        const id = setInterval(() => {
+        const wait = window.setInterval(() => {
             if (window.turnstile) {
-                clearInterval(id);
-                tryRender();
+                clearInterval(wait);
+                render();
             }
         }, 50);
 
         return () => {
             canceled = true;
-            clearInterval(id);
-            if (window.turnstile && widgetId.current && window.turnstile.remove) {
+            clearInterval(wait);
+            if (pollId) {
+                clearInterval(pollId);
+                pollId = null;
+            }
+            if (window.turnstile && widgetIdRef.current && window.turnstile.remove) {
                 try {
-                    window.turnstile.remove(widgetId.current);
+                    window.turnstile.remove(widgetIdRef.current);
                 } catch {
                 }
-                widgetId.current = null;
+                widgetIdRef.current = null;
             }
         };
-    }, [siteKey, theme, size, onVerify, onExpire]);
+    }, [siteKey, theme, size]); // <-- callbacks intentionally NOT included
 
-    return <div ref={ref} className={className}/>;
+    return <div ref={elRef} className={className}/>;
 }
