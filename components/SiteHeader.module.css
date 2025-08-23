@@ -1,0 +1,147 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(1.1) blur(8px);
+    background: color-mix(in oklab, white 78%, transparent);
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brandTop {
+    font-size: var(--step-2);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.brandBottom {
+    font-size: var(--step--1);
+    font-weight: 600;
+    opacity: .7;
+    margin-top: 2px;
+}
+
+/* Mobile menu (no JS) */
+.menu {
+    display: block;
+}
+
+.trigger {
+    list-style: none;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 1rem .7rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: var(--shadow-1);
+}
+
+.trigger::-webkit-details-marker {
+    display: none;
+}
+
+.burger {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111;
+    border-radius: 1px;
+}
+
+.burger::before, .burger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #111;
+    border-radius: 1px;
+}
+
+.burger::before {
+    top: -6px;
+}
+
+.burger::after {
+    top: 6px;
+}
+
+/* Slide-over sheet */
+.sheet {
+    position: fixed;
+    inset: 56px 0 auto 0; /* below header */
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+    padding: var(--space-4);
+    border-radius: 0 0 var(--radius-3) var(--radius-3);
+}
+
+.sheet ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-3);
+}
+
+.sheet a {
+    font-size: var(--step-1);
+    padding: .6rem .25rem;
+    display: block;
+}
+
+/* Close sheet when collapsed */
+.menu:not([open]) .sheet {
+    display: none;
+}
+
+/* Desktop nav */
+.navDesktop {
+    display: none;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.navDesktop a {
+    text-decoration: none;
+    color: inherit;
+    padding: .4rem 0;
+    font-size: var(--step-0);
+}
+
+@media (min-width: 960px) {
+    .menu {
+        display: none;
+    }
+
+    .navDesktop {
+        display: flex;
+    }
+
+    .brand {
+        flex-direction: row;
+        gap: .5rem;
+        align-items: baseline;
+    }
+
+    .brandBottom {
+        font-size: var(--step-0);
+        opacity: .75;
+    }
+}

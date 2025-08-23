@@ -5,6 +5,7 @@ import type {ReactNode} from "react";
 import Link from "next/link";
 import CommandMenu from "@/components/CommandMenu";
 import ReadingProgress from "@/components/ReadingProgress";
+import SiteHeader from "@/components/SiteHeader";
 
 /* Stronger SEO + sharing + platform hints */
 export const metadata = {
@@ -69,40 +70,6 @@ export const viewport = {
     themeColor: "#0F2A6B", // navy action color (executive theme)
 } as const;
 
-function Header() {
-    return (
-        <header className="site-header" role="banner">
-            <div className="container header-inner">
-                <Link href="/" className="brand" aria-label="Jason Flatford — Home">
-                    Jason Flatford
-                </Link>
-
-                {/* Keep nav minimal & scannable */}
-                <nav aria-label="Main Navigation" className="nav">
-                    <ul>
-                        <li><Link href="/case-studies">Case Studies</Link></li>
-                        <li><Link href="/skills">Skills</Link></li>
-                        <li><Link href="/timeline">Timeline</Link></li>
-                        <li><Link href="/contact">Contact</Link></li>
-                        {/* Serve the PDF directly; download attribute sets a clean filename */}
-                        <li>
-                            <Link
-                                href="/resume.pdf"
-                                download={"Jason-Flatford-Resume-2025-08.pdf"}
-                                aria-label="Download résumé (PDF)"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Résumé
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    );
-}
-
 function Footer() {
     return (
         <footer className="site-footer" role="contentinfo">
@@ -142,7 +109,7 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <a href="#main" className="skip-link">
             Skip to content
         </a>
-        <Header/>
+        <SiteHeader />
         <main id="main" className="container main">
             {children}
         </main>
