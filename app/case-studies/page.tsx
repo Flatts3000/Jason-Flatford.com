@@ -30,6 +30,16 @@ const ALL_ITEMS: CaseItem[] = [
         year: 2024,
     },
     {
+        href: "/case-studies/slotomancer",
+        title: "Slotomancer — Cross-Platform Roguelike",
+        summary:
+            "Hexagonal architecture enabling 100% code sharing between desktop and mobile; platform-agnostic game engine with privacy-first telemetry.",
+        image: "/images/cases/slotomancer.webp",
+        alt: "Slotomancer game interface showing wizard-themed slot-battler",
+        tags: ["Game", "Architecture", "Platform"],
+        year: 2024,
+    },
+    {
         href: "/case-studies/duly",
         title: "Duly — AI for Civic Ops",
         summary:

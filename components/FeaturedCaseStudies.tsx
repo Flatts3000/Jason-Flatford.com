@@ -25,6 +25,14 @@ const items: CaseItem[] = [
         alt: "Esports platform interface mockup",
     },
     {
+        href: "/case-studies/slotomancer",
+        title: "Slotomancer — Cross-Platform Roguelike",
+        summary: "Hexagonal architecture achieving 100% code sharing between desktop and mobile; platform-agnostic game engine with privacy-first telemetry.",
+        image: "/images/cases/slotomancer.webp",
+        tags: ["Architecture", "Cross-Platform", "Game"],
+        alt: "Slotomancer wizard-themed slot-battler interface",
+    },
+    {
         href: "/case-studies/duly",
         title: "Duly — AI for Civic Ops",
         summary: "Automations and natural-language workflows for elected officials and citizens; faster service delivery.",
@@ -33,20 +41,12 @@ const items: CaseItem[] = [
         alt: "Civic operations dashboard",
     },
     {
-        href: "/case-studies/memnai",
-        title: "Memnai — Natural-Language BI",
-        summary: "Text-to-SQL analytics that puts data questions in plain English; secure, governed insights.",
-        image: "/images/cases/memnai.png",
-        tags: ["AI", "Data", "Platform"],
-        alt: "Analytics UI mockup",
-    },
-    {
         href: "/case-studies/endless-grimoire",
-        title: "The Endless Grimoire — Mobile Idle/Clicker Game",
-        summary: "A mobile idle/clicker experience; systems design, UX, and analytics with iterative live ops.",
+        title: "The Endless Grimoire — Cozy Spell-Craft Idle",
+        summary: "Tap to gather, hire workers, unlock passive sigils, and time active spells. Built for delight with a strongly-typed game loop.",
         image: "/images/cases/endless-grimoire.webp",
-        tags: ["Mobile", "Game Design", "Live Ops"],
-        alt: "Mobile game UI mockup",
+        tags: ["Game", "TypeScript", "Mobile"],
+        alt: "Endless Grimoire spell-craft idle game interface",
     },
 ];
 
