@@ -20,6 +20,16 @@ type CaseItem = {
 
 const ALL_ITEMS: CaseItem[] = [
     {
+        href: "/case-studies/snappycvs",
+        title: "SnappyCVs — AI Resume Tailoring Platform",
+        summary:
+            "Full-stack SaaS for AI-powered job fit scoring, tailored resume generation, and application tracking with Stripe billing.",
+        image: "/images/cases/snappycvs.webp",
+        alt: "SnappyCVs platform interface showing resume tailoring",
+        tags: ["SaaS", "AI", "Architecture", "Billing"],
+        year: 2026,
+    },
+    {
         href: "/case-studies/melee",
         title: "Esports SaaS Platform (Melee.gg)",
         summary:
@@ -83,6 +93,7 @@ const ALL_TAGS = [
     "Platform",
     "Design",
     "Mobile",
+    "Billing",
 ] as const;
 
 export default function Page() {
