@@ -9,13 +9,13 @@ export const metadata = {
 
 export default function DulyCaseStudyPage() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="duly">
             <a href="#content" className={styles.skip}>Skip to content</a>
 
             {/* HERO */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>Civic Tech</p>
                     <h1 id="title" className={styles.title}>
                         Duly — verified constituent voices, AI-assisted summaries, and transparent dashboards
                     </h1>
@@ -291,19 +291,21 @@ export default function DulyCaseStudyPage() {
 
                     {/* CTA */}
                     <section id="cta" aria-labelledby="cta-h">
-                        <h2 id="cta-h" className={styles.h2}>Pilot with Duly</h2>
+                        <h2 id="cta-h" className={styles.h2}>Interested in civic tech?</h2>
                         <p className={styles.lede}>
-                            We’re inviting 5–10 additional pilot municipalities. If verified voices and transparent follow-through would help
-                            your community, let’s talk.
+                            Duly is seeking pilot municipalities ready to transform constituent engagement.
+                            If you're building in the civic space or exploring similar challenges, I'd welcome the conversation.
                         </p>
                         <div className={styles.heroCTAs}>
-                            <Link href="https://dulyelected.org" className={styles.btnPrimary} target="_blank" rel="noopener noreferrer"> Visit dulyelected.org </Link>
-                            <Link href="/contact" className={styles.btnGhost}>Get in touch</Link>
-                            <Link href="/case-studies/memnai" className={styles.btnGhost}>See Memnai (analytics)</Link>
+                            <Link href="https://dulyelected.org" className={styles.btnPrimary} target="_blank" rel="noopener noreferrer">
+                                Visit dulyelected.org
+                            </Link>
+                            <Link href="/contact" className={styles.btnGhost}>Discuss civic tech</Link>
+                            <Link href="/case-studies/memnai" className={styles.btnGhost}>Explore Memnai →</Link>
                         </div>
                     </section>
 
-                    <p className={styles.backTop}><a href="#top">Back to top ↑</a></p>
+                    <p className={styles.backTop}><a href="#top">Return to top</a></p>
                 </article>
             </div>
         </main>

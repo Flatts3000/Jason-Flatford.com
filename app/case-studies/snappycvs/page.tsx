@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function SnappyCVsPage() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="snappycvs">
             <a href="#content" className={styles.skip}>
                 Skip to content
             </a>
@@ -17,7 +17,7 @@ export default function SnappyCVsPage() {
             {/* ───────── HERO ───────── */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>SaaS</p>
                     <h1 id="title" className={styles.title}>
                         SnappyCVs
                     </h1>
@@ -617,26 +617,29 @@ export default function SnappyCVsPage() {
                     {/* ───────── CTA ───────── */}
                     <section id="cta" aria-labelledby="cta-h">
                         <h2 id="cta-h" className={styles.h2}>
-                            Let&apos;s connect
+                            Building AI-powered SaaS?
                         </h2>
                         <p className={styles.lede}>
-                            SnappyCVs demonstrates my ability to architect and deliver complex,
-                            production-ready SaaS applications—from AI integration to billing to
-                            infrastructure. Interested in working together?
+                            SnappyCVs showcases end-to-end SaaS delivery: LLM integration, Stripe billing,
+                            AWS infrastructure, and production-grade UX. If you're tackling similar challenges
+                            or need someone who can ship the full stack, let's talk.
                         </p>
 
                         <div className={styles.heroCTAs}>
                             <Link href="/contact" className={styles.btnPrimary}>
-                                Get in touch
+                                Discuss your project
+                            </Link>
+                            <Link href="/case-studies/memnai" className={styles.btnGhost}>
+                                Explore Memnai →
                             </Link>
                             <Link href="/case-studies/melee" className={styles.btnGhost}>
-                                See Melee case study
+                                Explore Melee.gg →
                             </Link>
                         </div>
                     </section>
 
                     <p className={styles.backTop}>
-                        <a href="#top">Back to top ↑</a>
+                        <a href="#top">Return to top</a>
                     </p>
                 </article>
             </div>

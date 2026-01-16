@@ -10,13 +10,13 @@ export const metadata = {
 
 export default function SlotomancerCaseStudyPage() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="slotomancer">
             <a href="#content" className={styles.skip}>Skip to content</a>
 
             {/* HERO */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>Architecture</p>
                     <h1 id="title" className={styles.title}>
                         Slotomancer — Cross-platform roguelike with hexagonal architecture
                     </h1>
@@ -477,20 +477,20 @@ packages/game-core         (game engine: pure TS, zero platform deps)`}
 
                     {/* CTA */}
                     <section id="cta" aria-labelledby="cta-h">
-                        <h2 id="cta-h" className={styles.h2}>Let's connect</h2>
+                        <h2 id="cta-h" className={styles.h2}>Interested in cross-platform architecture?</h2>
                         <p className={styles.lede}>
-                            I'm available to discuss the architecture, technical decisions, and product thinking behind
-                            Slotomancer. Happy to dive deep into cross-platform architecture, game engine design, or
-                            infrastructure as code.
+                            I'd enjoy discussing ports-and-adapters patterns, monorepo strategies, or building
+                            game engines with pure business logic. Whether you're shipping on multiple platforms
+                            or solving similar challenges, let's compare notes.
                         </p>
                         <div className={styles.heroCTAs}>
-                            <Link href="/contact" className={styles.btnPrimary}>Get in touch</Link>
-                            <Link href="/case-studies/melee" className={styles.btnGhost}>See Melee.gg</Link>
-                            <Link href="/timeline" className={styles.btnGhost}>View timeline</Link>
+                            <Link href="/contact" className={styles.btnPrimary}>Discuss architecture</Link>
+                            <Link href="/case-studies/melee" className={styles.btnGhost}>Explore Melee.gg →</Link>
+                            <Link href="/case-studies/endless-grimoire" className={styles.btnGhost}>Explore Grimoire →</Link>
                         </div>
                     </section>
 
-                    <p className={styles.backTop}><a href="#top">Back to top ↑</a></p>
+                    <p className={styles.backTop}><a href="#top">Return to top</a></p>
                 </article>
             </div>
         </main>

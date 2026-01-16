@@ -10,13 +10,13 @@ export const metadata = {
 
 export default function EndlessGrimoireCaseStudy() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="grimoire">
             <a href="#content" className={styles.skip}>Skip to content</a>
 
             {/* HERO */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>Game Dev</p>
                     <h1 id="title" className={styles.title}>
                         The Endless Grimoire — cozy spell-craft idle, built for delight
                     </h1>
@@ -311,18 +311,18 @@ export default function EndlessGrimoireCaseStudy() {
 
                     {/* CTA */}
                     <section id="cta" aria-labelledby="cta-h">
-                        <h2 id="cta-h" className={styles.h2}>Want to try it?</h2>
+                        <h2 id="cta-h" className={styles.h2}>Curious about the game?</h2>
                         <p className={styles.lede}>
-                            I’m sharing private builds with studios and friends. If you’d like to test the feel—or
-                            peek under the hood at the math/config system—I’m happy to send a build.
+                            I'm sharing private builds with studios and fellow devs. If you'd like to playtest—or
+                            dig into the systems design and math engine—reach out and I'll send a build your way.
                         </p>
                         <div className={styles.heroCTAs}>
                             <Link href="/contact" className={styles.btnPrimary}>Request a build</Link>
-                            <Link href="/case-studies/memnai" className={styles.btnGhost}>See Memnai</Link>
+                            <Link href="/case-studies/slotomancer" className={styles.btnGhost}>Explore Slotomancer →</Link>
                         </div>
                     </section>
 
-                    <p className={styles.backTop}><a href="#top">Back to top ↑</a></p>
+                    <p className={styles.backTop}><a href="#top">Return to top</a></p>
                 </article>
             </div>
         </main>

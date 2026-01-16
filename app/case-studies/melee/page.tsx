@@ -10,13 +10,13 @@ export const metadata = {
 
 export default function MeleeCaseStudyPage() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="melee">
             <a href="#content" className={styles.skip}>Skip to content</a>
 
             {/* HERO */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>Platform</p>
                     <h1 id="title" className={styles.title}>
                         Melee.gg — From zero to a global tournament platform
                     </h1>
@@ -308,14 +308,15 @@ export default function MeleeCaseStudyPage() {
 
                     {/* CTA */}
                     <section id="cta" aria-labelledby="cta-h">
-                        <h2 id="cta-h" className={styles.h2}>Let’s connect</h2>
+                        <h2 id="cta-h" className={styles.h2}>Building event platforms?</h2>
                         <p className={styles.lede}>
-                            I’m available to discuss Melee.gg at a high level — my role, product approach,
-                            and what’s publicly available — without going into sensitive implementation details.
+                            I've shipped real-time tournament systems at global scale. Whether you're working on
+                            esports, live events, or multi-tenant SaaS, I'd enjoy comparing notes on architecture and ops.
                         </p>
                         <div className={styles.heroCTAs}>
-                            <Link href="/contact" className={styles.btnPrimary}>Get in touch</Link>
-                            <Link href="/timeline" className={styles.btnGhost}>See timeline & milestones</Link>
+                            <Link href="/contact" className={styles.btnPrimary}>Start a conversation</Link>
+                            <Link href="/timeline" className={styles.btnGhost}>View my timeline</Link>
+                            <Link href="/case-studies/slotomancer" className={styles.btnGhost}>Explore Slotomancer →</Link>
                         </div>
                     </section>
 
@@ -325,7 +326,7 @@ export default function MeleeCaseStudyPage() {
                             Names are used for identification only and do not imply endorsement.</em>
                     </p>
 
-                    <p className={styles.backTop}><a href="#top">Back to top ↑</a></p>
+                    <p className={styles.backTop}><a href="#top">Return to top</a></p>
                 </article>
             </div>
         </main>

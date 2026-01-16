@@ -20,6 +20,11 @@ export function Hero() {
                     Executive strategy + hands-on architecture for SaaS, AI, and gaming—shipping fast and scaling reliably.
                 </p>
 
+                <p className={styles.callout}>
+                    <span className={styles.calloutIcon} aria-hidden="true">⚡</span>
+                    <span>Painful tech problem? I dig in, find root cause, and ship the fix — fast.</span>
+                </p>
+
                 <div className={styles.cta}>
                     <a
                         href="https://calendly.com/flatts-scg/15-minute-intro"

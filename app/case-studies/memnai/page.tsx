@@ -10,13 +10,13 @@ export const metadata = {
 
 export default function MemnaiCaseStudyPage() {
     return (
-        <main className={styles.wrap}>
+        <main className={styles.wrap} data-project="memnai">
             <a href="#content" className={styles.skip}>Skip to content</a>
 
             {/* HERO */}
             <header className={styles.hero} id="top" aria-labelledby="title">
                 <div className={styles.heroCopy}>
-                    <p className={styles.kicker}>Case study</p>
+                    <p className={styles.kicker}>AI + Data</p>
                     <h1 id="title" className={styles.title}>
                         Memnai — Unifying data ingestion & AI reporting
                     </h1>
@@ -262,18 +262,19 @@ export default function MemnaiCaseStudyPage() {
 
                     {/* CTA */}
                     <section id="cta" aria-labelledby="cta-h">
-                        <h2 id="cta-h" className={styles.h2}>Pilot Memnai</h2>
+                        <h2 id="cta-h" className={styles.h2}>Tackling document intelligence?</h2>
                         <p className={styles.lede}>
-                            We’re lining up early pilots in document-heavy environments (finance, healthcare, manufacturing).
-                            If you’d like to explore on-prem or private-cloud deployments, let’s talk.
+                            I'm deeply invested in the intersection of AI, document processing, and enterprise data.
+                            If you're building in this space or need to unlock insights from unstructured data, let's connect.
                         </p>
                         <div className={styles.heroCTAs}>
-                            <Link href="/contact" className={styles.btnPrimary}>Get in touch</Link>
-                            <Link href="/case-studies/duly" className={styles.btnGhost}>See Duly (civic)</Link>
+                            <Link href="/contact" className={styles.btnPrimary}>Discuss AI + data</Link>
+                            <Link href="/case-studies/duly" className={styles.btnGhost}>Explore Duly →</Link>
+                            <Link href="/case-studies/snappycvs" className={styles.btnGhost}>Explore SnappyCVs →</Link>
                         </div>
                     </section>
 
-                    <p className={styles.backTop}><a href="#top">Back to top ↑</a></p>
+                    <p className={styles.backTop}><a href="#top">Return to top</a></p>
                 </article>
             </div>
         </main>
