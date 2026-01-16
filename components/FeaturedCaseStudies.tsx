@@ -17,6 +17,14 @@ type CaseItem = {
 
 const items: CaseItem[] = [
     {
+        href: "/case-studies/snappycvs",
+        title: "SnappyCVs — AI Resume Tailoring Platform",
+        summary: "Full-stack SaaS for AI-powered job fit scoring, tailored resume generation, and application tracking with Stripe billing.",
+        image: "/images/cases/snappycvs.webp",
+        tags: ["SaaS", "AI", "Architecture"],
+        alt: "SnappyCVs platform interface showing resume tailoring",
+    },
+    {
         href: "/case-studies/melee",
         title: "Esports SaaS Platform (Melee.gg)",
         summary: "Envisioned, launched and scaled a multi-tenant platform; led product strategy and architecture end-to-end.",
@@ -39,14 +47,6 @@ const items: CaseItem[] = [
         image: "/images/cases/duly.webp",
         tags: ["AI", "Automation", "Civic Tech"],
         alt: "Civic operations dashboard",
-    },
-    {
-        href: "/case-studies/endless-grimoire",
-        title: "The Endless Grimoire — Cozy Spell-Craft Idle",
-        summary: "Tap to gather, hire workers, unlock passive sigils, and time active spells. Built for delight with a strongly-typed game loop.",
-        image: "/images/cases/endless-grimoire.webp",
-        tags: ["Game", "TypeScript", "Mobile"],
-        alt: "Endless Grimoire spell-craft idle game interface",
     },
 ];
 

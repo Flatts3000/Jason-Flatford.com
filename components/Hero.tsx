@@ -44,7 +44,7 @@ export function Hero() {
             {/* RIGHT: headshot (240px) */}
             <div className={styles.photo}>
                 <Image
-                    src="/images/headshot.webp"
+                    src="/images/founder.webp"
                     alt="Headshot of Jason Flatford"
                     width={240}
                     height={240}
