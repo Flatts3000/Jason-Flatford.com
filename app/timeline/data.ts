@@ -254,4 +254,20 @@ export const EVENTS: TimelineEvent[] = [
             {src: "/images/cases/endless-grimoire.webp", alt: "The Endless Grimoire game screenshot", ratio: "16/9", maxWidth: 600}
         ]
     },
+    {
+        id: "slotomancer-launch",
+        date: "2026-01-09",
+        title: "Launched Slotomancer — cross-platform roguelike with hexagonal architecture",
+        summary: "Shipped a wizard-themed roguelike slot-battler simultaneously on desktop (Tauri) and mobile (Expo) from a single codebase using hexagonal architecture, achieving ~100% code sharing.",
+        tags: ["Launch", "Gaming", "Architecture"],
+        links: [{label: "Case study", href: "/case-studies/slotomancer"}],
+    },
+    {
+        id: "snappycvs-launch",
+        date: "2026-01-16",
+        title: "Launched SnappyCVs — AI-powered resume tailoring SaaS",
+        summary: "Shipped a full-stack SaaS platform that uses AI to score job fit, generate tailored resumes and cover letters, and track applications through the hiring pipeline.",
+        tags: ["Launch", "SaaS", "AI"],
+        links: [{label: "Case study", href: "/case-studies/snappycvs"}],
+    },
 ];
