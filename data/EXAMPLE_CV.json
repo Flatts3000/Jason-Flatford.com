@@ -1,0 +1,899 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+    "basics": {
+        "name": "Jason Flatford",
+        "label": "Chief Product & Technology Leader — SaaS | AI | Platform Scaling",
+        "email": "flatts.scg@gmail.com",
+        "phone": "(865) 603-7332",
+        "url": "https://jasonflatford.com",
+        "location": {
+            "city": "Roanoke",
+            "region": "VA",
+            "countryCode": "US"
+        },
+        "profiles": [
+            {
+                "network": "LinkedIn",
+                "username": "flatford",
+                "url": "https://www.linkedin.com/in/flatford"
+            },
+            {
+                "network": "GitHub",
+                "username": "Flatts3000",
+                "url": "https://github.com/Flatts3000"
+            },
+            {
+                "network": "Website",
+                "username": "jasonflatford.com",
+                "url": "https://jasonflatford.com"
+            },
+            {
+                "network": "Substack",
+                "username": "flatts",
+                "url": "https://flatts.substack.com"
+            }
+        ],
+        "summary": "Product & technology executive spanning event operations, SaaS product development, and emerging AI platforms. First SaaS delivery was Concierge (internal tournament management) at StarCityGames.com. Scaled Melee.gg from concept to a global esports+events platform (≈400k users, ≈70k MAUs, ≈13k organizer partners), architecting a multi‑tenant codebase with real‑time analytics, multilingual support, and PCI‑compliant payments. Founder of Duly (civic‑tech; soft‑launch, no active users) and Memnai (AI‑driven reporting, in development). Hands‑on across architecture and delivery (.NET/C#, Java/Kotlin/Spring Boot, React/React Native) and cloud (AWS, Azure, Terraform, Docker)."
+    },
+    "work": [
+        {
+            "name": "Keyrune Inc. / Melee.gg",
+            "position": "Executive Vice President of Product",
+            "url": "https://melee.gg",
+            "startDate": "2019-01-01",
+            "endDate": "2025-06-30",
+            "location": "Remote / Roanoke, VA",
+            "summary": "Led product strategy and hands‑on platform architecture for a global esports/events SaaS.",
+            "highlights": [
+                "Scaled the platform to ≈400k registered users, ≈70k MAUs, and ≈13k B2B organizer partners with limited funding.",
+                "Owned end‑to‑end product lifecycle: discovery → roadmap → delivery → iteration, balancing partner needs and PLG signals.",
+                "Architected multi‑tenant SaaS (>2M LoC) with modular services: registration, decklists, pairings, standings, ticketing/payments, analytics, audit logging.",
+                "Implemented real‑time features with SignalR and WebSockets; built live ops dashboards for events and support.",
+                "Implemented multilingual/i18n framework and regionalization of payments and tax/VAT handling.",
+                "Designed and enforced security baselines: least‑privilege IAM, secrets management, audit trails.",
+                "PCI‑aware payments with Stripe; chargeback handling and reconciliation workflows.",
+                "Cloud migration and infra hardening: Azure → AWS; ECS, RDS (MariaDB), Redis, CloudWatch, Secrets Manager; IaC with Terraform; CDN/WAF via Cloudflare.",
+                "Observability: structured logging (Serilog), metrics and alerting; on‑call runbooks and incident communications.",
+                "AI augmentation: OpenAI‑assisted analytics and internal tooling; reduced manual operations and improved support SLAs.",
+                "Partnered with global brands (Wizards of the Coast, Disney, Red Bull) to unlock adoption and co‑marketing opportunities.",
+                "Collaborated with CEO on investor materials and growth narrative; aligned roadmap to fund‑raising milestones.",
+                "Built lightweight microservice patterns and code health standards; mentored contributors and contractors.",
+                "Forged alliances with Ravensburger and Fantasy Flight Games alongside Wizards of the Coast to support Disney Lorcana and Star Wars: Unlimited programs.",
+                "Directed global rollout in 8 languages; maintained 99.99%+ uptime across cloud-native architecture.",
+                "Launched a modular CMS to support content/program operations."
+            ],
+            "keywords": [
+                "SaaS",
+                "Product Strategy",
+                "Multi‑Tenant Architecture",
+                "Real‑Time Systems",
+                "Payments",
+                "i18n",
+                "AWS (ECS,RDS,CloudWatch,Secrets Manager)",
+                "Terraform",
+                "Cloudflare",
+                "ASP.NET MVC",
+                "C#",
+                "SignalR",
+                "NHibernate",
+                "MariaDB",
+                "Redis",
+                "OpenAI"
+            ]
+        },
+        {
+            "name": "Flattsware LLC",
+            "position": "Founder & President (later CTO)",
+            "startDate": "2019-01-01",
+            "endDate": "2022-05-01",
+            "location": "Manchester, CT / Remote",
+            "summary": "Formed to build and operate Melee.gg as the flagship product for online MTG Arena tournaments. Exclusively focused on Melee until Flattsware transitioned into Keyrune Incorporated in 2022 (assets migrated; continued as EVP of Product).",
+            "highlights": [
+                "Public launch of Melee (Mar 2020); early growth of ~1,000 users/week and 5,400 players served by Apr 2020.",
+                "Signed contract with Wizards of the Coast (Jul 2020); produced $250,000 Mythic Invitational, Players Tour Finals, Season Grand Finals, and Zendikar Rising Championship.",
+                "Operated the largest independently run MTG Arena online tournament for Red Bull Untapped (2,466 players); Red Bull Untapped Series totaled ~15,106 players.",
+                "Ran SCG Tour Online Series on Melee: Series 1 ($53k revenue; 287 tournaments; 3,285 players), Series 2 ($57k; 215 tournaments; 3,928 players), Series 3 ($56k; 99 tournaments; 13,633 players).",
+                "Global adoption: tournaments from every continent (except Antarctica) and users from 85 countries by Oct 2020.",
+                "Usage milestones: 50,000 matches played (Jul 2020); 100,000 (Sep/Oct 2020); 27,000 users / 3,000 tournaments / 160,000 matches (Dec 2020).",
+                "Launched public decklist database (Aug 2020) and reached ~2 million MTG cards registered.",
+                "Introduced Japanese language support (Feb 2021).",
+                "Release cadence: ~3 website updates per month post-launch.",
+                "Identified market gap for decklist ingestion & validation and built the core workflows end-to-end.",
+                "Sole developer through the early lifecycle; recruited Steve Port (CEO) and Brad Nelson (marketing/content) to scale operations."
+            ],
+            "keywords": [
+                "Melee.gg",
+                "ASP.NET MVC",
+                "C#",
+                "Azure",
+                "Online Tournaments",
+                "MTG Arena",
+                "Decklist Ingestion & Validation",
+                "Red Bull Untapped",
+                "Wizards of the Coast",
+                "SCG Tour Online",
+                "Globalization",
+                "Localization",
+                "i18n",
+                "Release Management",
+                "Startup Leadership"
+            ],
+            "url": ""
+        },
+        {
+            "name": "Foresite LLC",
+            "position": "Software Developer",
+            "startDate": "2012-01-01",
+            "endDate": "2014-12-31",
+            "location": "Manchester, CT & Roanoke, VA (Hybrid: on-site + remote)",
+            "summary": "Built the portal UI/UX and automation for classifying network device audit logs and managing rules; developed supporting services and tooling across Groovy/Grails and Java (Spring), with PostgreSQL as the primary datastore.",
+            "highlights": [
+                "Owned UI/UX for the audit-log classification workflow and the rules management console (Drools).",
+                "Built internal tools in Grails, Groovy, and Java to accelerate classification and reduce manual effort.",
+                "Developed Java microservices with Spring to automate parsing, normalization, and routing of audit logs.",
+                "Implemented PostgreSQL schemas and queries tuned for high-volume log classification workloads.",
+                "Delivered rich data-grid experiences with JavaScript, jQuery, DataTables, and Bootstrap for analysts and operators.",
+                "Collaborated with security/compliance stakeholders to ensure auditable workflows and reliable operations."
+            ],
+            "keywords": [
+                "UI/UX",
+                "Portal",
+                "Grails",
+                "Groovy",
+                "Java",
+                "Spring",
+                "Microservices",
+                "PostgreSQL",
+                "JavaScript",
+                "jQuery",
+                "DataTables",
+                "Bootstrap",
+                "Automation",
+                "Security",
+                "Audit Logs"
+            ]
+        },
+        {
+            "name": "StarCityGames.com",
+            "position": "Event Representative → Coordinator of Event Operations & Technical Lead",
+            "startDate": "2008-01-01",
+            "endDate": "2012-12-31",
+            "location": "Roanoke, VA (travel to events)",
+            "summary": "Started as an event representative administering in-person Magic: The Gathering events and producing venue table layouts (~30 events/year). Evolved into technical lead after GP Richmond, teaching myself VBA → Visual Basic → C# and building internal tooling (Print Assistant, Genesis POS) culminating in Concierge. Served as Event Lead for multiple Open Series events, owning logistics end-to-end, staff coordination, training, deployments, and on-site troubleshooting.",
+            "highlights": [
+                "Produced table layouts and handled venue/vendor liaison logistics for nearly 30 events per year during the first two years.",
+                "Served as Event Lead for Open Series events, owning operations from departure to return; managed 6–12 person admin teams, finances, and customer service.",
+                "Built the Print Assistant to transform structured player data into printable/postable outputs.",
+                "Built Genesis an internal POS-style event management tool that preceded Concierge.",
+                "Designed and launched Concierge to centralize registration/check-in, seating/pairings, staffing, badge printing/scanning, cash reconciliation, and reporting.",
+                "Standardized training, deployments, and on-site triage for Concierge; enabled any staffer to service any player with full context.",
+                "Redesigned registration flows that eliminated long lines seen at peak events (e.g., Richmond).",
+                "Partnered with leadership to iterate table layout, timing, and admin policies—streamlining player experience and event throughput."
+            ],
+            "keywords": [
+                "Event Operations",
+                "Table Layouts",
+                "Vendor & Venue Relations",
+                "Event Lead",
+                "VBA / Excel Macros",
+                "Visual Basic",
+                "C# / .NET",
+                "WPF",
+                "Print Assistant",
+                "Genesis (internal POS)",
+                "Concierge Platform",
+                "Badge Printing/Scanning",
+                "Staff Training",
+                "Logistics",
+                "On-site Troubleshooting"
+            ]
+        },
+        {
+            "name": "Eagle Boat Docks",
+            "position": "Director of Drafting & Design (Sole drafter/designer)",
+            "startDate": "2001-03-01",
+            "endDate": "2010-05-01",
+            "location": "Maynardville, Tennessee",
+            "summary": "Sole drafter and designer across a jack-of-all-trades marina operation—commercial marinas, structural steel fabrication, and boat lifts. Owned costing, design/engineering, vendor liaison, and QA on multi-million-dollar projects; drove component innovations that cut cost and boosted quality.",
+            "highlights": [
+                "Architected and engineered several multi-million-dollar commercial marina projects from concept through fabrication.",
+                "Led project costing and produced quotes, scopes of work, and proposals for marinas, docks, boat lifts, and solar add-ons.",
+                "Introduced design innovations to boat-dock components that reduced production cost while improving quality and durability.",
+                "Established and ran QA processes for structural steel and marina fabrications.",
+                "Designed boat lifts and managed the design-to-fabrication handoff.",
+                "Vendor liaison and purchasing owner for structural steel and flotation materials."
+            ],
+            "keywords": [
+                "CAD",
+                "Commercial Marinas",
+                "Structural Steel Fabrication",
+                "Boat Lifts",
+                "Cost Estimation",
+                "Design Innovation",
+                "Quality Assurance",
+                "Procurement",
+                "Vendor Management",
+                "Solar Installations",
+                "Scope of Work / Quoting"
+            ]
+        },
+        {
+            "name": "Tennessee Valley Authority (TVA)",
+            "position": "Personal Service Contractor (School‑to‑Work)",
+            "startDate": "2002-05-01",
+            "endDate": "2003-05-01",
+            "location": "Knoxville, Tennessee",
+            "summary": "Traced and maintained detailed plant drawings; built early exposure to large‑scale energy systems.",
+            "highlights": [
+                "Developed precision drafting skills and documentation discipline in a regulated environment."
+            ],
+            "keywords": [
+                "CAD",
+                "Power Generation",
+                "Documentation"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Melee.gg",
+            "entity": "Flattsware LLC (2019–2022) → Keyrune Incorporated (2022–2025)",
+            "type": "application",
+            "startDate": "2019-01-01",
+            "endDate": "2025-06-30",
+            "roles": [
+                "Founder (via Flattsware)",
+                "EVP Product (Keyrune)"
+            ],
+            "url": "https://melee.gg",
+            "description": "Esports/events SaaS built to run large-scale Magic: The Gathering tournaments (online & in-person): registration, decklists, pairings, standings, payments, analytics, and live ops.",
+            "highlights": [
+                "Scaled to ≈400k registered users, ≈70k MAUs, and ≈13k organizer partners with a lean team.",
+                "Originated at Flattsware (2019) as an ASP.NET MVC (C#) app on Azure to run MTG Arena events; later operated under Keyrune.",
+                "Delivered 99.99%+ uptime and an 8-language rollout; global usage across 80+ countries.",
+                "Largest independently run MTG Arena online tournament for Red Bull Untapped (≈2,400 players); additional Untapped series events (~15k players total).",
+                "Hosted professional events for Wizards of the Coast during the COVID era (online/hybrid Pro Tours).",
+                "SCG Tour Online operations with hundreds of tournaments and six-figure revenue across three series.",
+                "Launched public decklist database; reached ~2M MTG cards registered and >100k matches within months of launch.",
+                "Multi-tenant architecture (>2M LoC) with RBAC, audit logging, and admin/live-ops dashboards.",
+                "Real-time features (SignalR/WebSockets) for pairings, standings, and event control.",
+                "PCI-aware payments via Stripe including chargeback handling and financial reconciliation.",
+                "OpenAI-assisted analytics and internal tooling that reduced manual ops and improved support SLAs.",
+                "Alliances/partnerships with Wizards of the Coast, Disney, Red Bull, Ravensburger (Disney Lorcana), and Fantasy Flight Games (Star Wars: Unlimited).",
+                "Infrastructure evolution: Azure → AWS (ECS, RDS/MariaDB, Redis, CloudWatch, Secrets Manager), Terraform/IaC, Cloudflare WAF/CDN.",
+                "Launched a modular CMS to support content/program operations; maintained a steady post-launch release cadence."
+            ],
+            "keywords": [
+                "SaaS",
+                "Esports",
+                "Tournament Operations",
+                "Decklist Ingestion & Validation",
+                "Real-Time (SignalR/WebSockets)",
+                "Payments (Stripe/PayPal) / PCI-aware",
+                "RBAC",
+                "Audit Logging",
+                "Analytics & Dashboards",
+                "OpenAI Integration",
+                "ASP.NET MVC",
+                "C# / .NET",
+                "Azure",
+                "AWS (ECS, RDS/MariaDB, Redis, CloudWatch, Secrets Manager)",
+                "Terraform / IaC",
+                "Internationalization (8 languages)",
+                "Multi-tenant Architecture",
+                "Modular CMS",
+                "Wizards of the Coast",
+                "Red Bull Untapped",
+                "Ravensburger / Disney Lorcana",
+                "Fantasy Flight Games / Star Wars: Unlimited"
+            ]
+        },
+        {
+            "name": "Duly",
+            "type": "application",
+            "roles": [
+                "Founder & CEO",
+                "Product Lead"
+            ],
+            "description": "Civic-engagement platform designed to make constituent communications more transparent and approachable—especially for younger voters. Gives elected officials tools to ingest and manage constituent messages while publishing public, privacy-safe summaries.",
+            "highlights": [
+                "Soft-launched; shown to multiple elected officials; currently paused while focusing on job search.",
+                "Enables verified offices to ingest constituent messages and publish public summaries for transparency.",
+                "Goal: onboard elected officials’ offices as first organizations; resources are the current blocker."
+            ],
+            "keywords": [
+                "Civic Tech",
+                "Transparency",
+                "Constituent Messaging",
+                "AI/NLP Summarization",
+                "Public Dashboards",
+                "Soft Launch",
+                "Paused"
+            ],
+            "url": "https://dulyelected.org"
+        },
+        {
+            "name": "Memnai",
+            "type": "application",
+            "roles": [
+                "Founder / Product Lead"
+            ],
+            "description": "Prototype interface that lets non-SQL users query and manage relational data using natural language. The AI generates SQL within role-based guardrails so users can safely read/write, import/export data, and create tables according to permissions.",
+            "highlights": [
+                "Prototype only; not launched; currently paused.",
+                "Natural-language → SQL with RBAC guardrails for safe reads/writes.",
+                "Planned stack: Spring Boot + Kotlin backend, React frontend; supports schema/metadata injection and query previews."
+            ],
+            "keywords": [
+                "AI",
+                "BI",
+                "Natural Language to SQL",
+                "RBAC",
+                "Data Import/Export",
+                "Prototype",
+                "Paused",
+                "Kotlin",
+                "Spring Boot",
+                "React"
+            ],
+            "url": ""
+        },
+        {
+            "name": "Concierge",
+            "entity": "StarCityGames.com",
+            "type": "application",
+            "description": "Internal, admin-only tournament management platform for large-scale Magic: The Gathering events (registration, staffing, logistics, reporting).",
+            "startDate": "2011-04-30",
+            "endDate": "2012-12-31",
+            "roles": [
+                "Designer / Developer",
+                "Event Tech Lead"
+            ],
+            "highlights": [
+                "First full-scale production deployment at Grand Prix London (Apr 30–May 1, 2011).",
+                "Cleared a ~100-person registration line in ~10 minutes and maintained effectively zero wait time for the rest of the 3-day event.",
+                "Replaced prior Google Docs workflow that caused building-length queues at peak events (Richmond).",
+                "Used across SCG Grand Prix and SCG Open Series; served ≈100,000 total attendees; used by hundreds of contractors and an ~11-person internal ops team.",
+                "Admin-only design: any staffer could service any player with full context, significantly improving customer service and first-touch resolution.",
+                "Key modules: registration & check-in; badge assignment/printing/scanning; seating & pairings; staffing; POS-style ticket issuance (no payment processing); cash reconciliation; reporting/BI.",
+                "Architecture/stack: .NET (C#) with WPF on Windows; MySQL; on-prem servers; role-based access control (RBAC) and audit logs."
+            ],
+            "keywords": [
+                ".NET",
+                "C#",
+                "WPF",
+                "Windows",
+                "MySQL",
+                "On-prem servers",
+                "Badge printers/scanners",
+                "RBAC",
+                "Audit logs",
+                "Reporting/BI",
+                "POS/Ticketing (non-processing)"
+            ],
+            "url": ""
+        },
+        {
+            "name": "The Endless Grimoire",
+            "type": "game",
+            "roles": [
+                "Designer & Developer"
+            ],
+            "description": "Mobile clicker/idle game prototype. All in-game content is AI-generated. Primary objective was to build hands-on experience with React, React Native, and mobile design.",
+            "highlights": [
+                "Prototype stage; not launched; currently paused.",
+                "All content AI-generated to enable a very large content set.",
+                "Personal learning project to deepen React/React Native/mobile-design skills."
+            ],
+            "keywords": [
+                "Game Design",
+                "Idle",
+                "Mobile",
+                "React Native",
+                "React",
+                "AI-Generated Content",
+                "Prototype",
+                "Paused"
+            ],
+            "url": ""
+        }
+    ],
+    "education": [
+        {
+            "institution": "ITT Technical Institute",
+            "studyType": "AAS",
+            "area": "Drafting & Design",
+            "endDate": "2005-01-01",
+            "startDate": "2003-01-01"
+        }
+    ],
+    "volunteer": [
+        {
+            "organization": "Magic: The Gathering Judge Program",
+            "position": "Level 3 (Premier) Judge — Mid-Atlantic Regional Leader",
+            "url": "https://blogs.magicjudges.org/o/judge-levels/",
+            "summary": "Volunteered ~5–6 years as a Level 3 judge (≈110 of ~6,000 judges at the time). Regional leadership in the Mid-Atlantic; team lead/head judge at premier events; member of the Player Investigations Committee; mentor/examiner for new judges; conference presenter.",
+            "highlights": [
+                "Led or team-led ~100+ events across the U.S., Europe, Central America, Canada, and Hawaii; recognized for on-site crisis management and de-escalation.",
+                "One of a small global cohort of Level 3 judges responsible for event leadership, policy interpretation, and program contributions.",
+                "Member of the Player Investigations Committee (post-DQ reviews, penalty/suspension recommendations).",
+                "Mentored, trained, and certified ~30 judges (L1/L2); authored training materials and delivered seminars (incl. player investigation/anti-cheating).",
+                "Deep rules/policy expertise (MTR, IPG, JAR); known for clear player communication and conflict resolution.",
+                "Regular team leadership at Grand Prix/Pro Tour-level events, including Pro Tour Sundays."
+            ],
+            "keywords": [
+                "Tournament Operations",
+                "Head Judge / Team Lead",
+                "Policy & Rules (MTR/IPG/JAR)",
+                "Player Investigations Committee",
+                "Mentorship & Certification",
+                "Conflict Management & De-escalation",
+                "Conference Presentations",
+                "Global Travel & Logistics"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "Product Leadership",
+            "level": "Expert",
+            "keywords": [
+                "Vision & Strategy",
+                "Product Strategy",
+                "Product Discovery",
+                "Roadmapping",
+                "Outcome-driven Planning",
+                "GTM Strategy",
+                "Pricing & Packaging",
+                "Product-Led Growth (PLG)",
+                "Program/Project Management",
+                "Change Management",
+                "Org Design & Hiring",
+                "Cross-Functional Leadership",
+                "Stakeholder Communication (C-suite & Board)",
+                "Vendor Management",
+                "Partnership Development",
+                "Community Strategy"
+            ]
+        },
+        {
+            "name": "Product Design / UX",
+            "level": "Advanced",
+            "keywords": [
+                "Accessibility (WCAG 2.2 AA)",
+                "Information Architecture",
+                "Interaction Design",
+                "Design Systems",
+                "Data Visualization",
+                "Material Design",
+                "Bootstrap / Tailwind",
+                "Motion & Micro-interactions",
+                "UX Writing",
+                "Figma handoff"
+            ]
+        },
+        {
+            "name": "Engineering & Architecture",
+            "level": "Expert",
+            "keywords": [
+                "Multi-Tenant SaaS",
+                "Microservices & Modular Monoliths",
+                "Event-Driven Systems",
+                "Real-Time Systems (SignalR/WebSockets)",
+                "API Design (REST/GraphQL)",
+                "Authentication & SSO (OAuth2/OIDC/SAML)",
+                "RBAC/ABAC",
+                "Payments & Billing (Stripe/PayPal)",
+                "Search (Lucene)",
+                "Observability (logs/metrics/tracing)",
+                "Performance & Caching",
+                "Webhooks",
+                "Testing (unit/integration)",
+                "Version Control (Git)",
+                "Legacy Modernization"
+            ]
+        },
+        {
+            "name": "Data & AI",
+            "level": "Advanced",
+            "keywords": [
+                "LLM Integration (OpenAI API)",
+                "Prompt Engineering",
+                "Retrieval Patterns / RAG",
+                "Vector Indexing (pgvector)",
+                "Dashboards & Reporting",
+                "Real-time Analytics",
+                "Event Tracking & Telemetry",
+                "Data Modeling",
+                "SQL & NoSQL",
+                "S3 Data Lakes"
+            ]
+        },
+        {
+            "name": "Platforms & Languages",
+            "level": "Advanced",
+            "keywords": [
+                "ASP.NET / Razor",
+                "C# / .NET",
+                "Java",
+                "Kotlin / Spring Boot",
+                "Node.js / TypeScript",
+                "React / Next.js",
+                "React Native",
+                "GraphQL",
+                "HTML5 / CSS3 / Tailwind",
+                "Bash / PowerShell",
+                "WPF / WinForms",
+                "VBA / Excel"
+            ]
+        },
+        {
+            "name": "Cloud & DevOps",
+            "level": "Advanced",
+            "keywords": [
+                "AWS (EC2, S3, RDS, Lambda, CloudFront, CloudWatch)",
+                "Azure (App Service, AKS, Cosmos DB)",
+                "Docker",
+                "Terraform / IaC",
+                "GitHub Actions / CI-CD",
+                "Cloudflare (WAF/Workers/CDN)",
+                "Secrets Management",
+                "Monitoring & Alerting",
+                "Cost Optimization",
+                "Blue/Green & Canary Releases"
+            ]
+        },
+        {
+            "name": "Security & Compliance",
+            "level": "Advanced",
+            "keywords": [
+                "Audit Logging",
+                "RBAC / Permissions",
+                "Privacy by Design (GDPR/CCPA)",
+                "PCI Awareness",
+                "SOC-2 Awareness",
+                "HIPAA Awareness",
+                "Secrets Management",
+                "Incident Management"
+            ]
+        },
+        {
+            "name": "Datastores",
+            "level": "Advanced",
+            "keywords": [
+                "PostgreSQL",
+                "MariaDB / MySQL",
+                "SQL Server",
+                "MongoDB",
+                "Redis"
+            ]
+        },
+        {
+            "name": "Domain Expertise",
+            "level": "Advanced",
+            "keywords": [
+                "Gaming & Esports",
+                "Civic Tech / GovTech",
+                "Enterprise SaaS",
+                "Community Platforms",
+                "API Ecosystems",
+                "Marketplaces & Booking",
+                "Payments & Subscriptions",
+                "Multilingual Systems",
+                "B2B & B2C Solutions",
+                "Live Event Operations"
+            ]
+        },
+        {
+            "name": "Top Skills",
+            "keywords": [
+                "Product Strategy",
+                "Platform Architecture",
+                "AI Integration",
+                "Real-Time Systems",
+                "Payments",
+                "PLG & Growth",
+                "Executive Stakeholder Communication"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "English",
+            "fluency": "Native speaker"
+        }
+    ],
+    "interests": [
+        {
+            "name": "Gaming & Esports",
+            "keywords": [
+                "Live event operations (1k+ attendees)",
+                "Tournament administration (MTG/TCG)",
+                "Table layout & venue logistics",
+                "Vendor & partner relations",
+                "Tournament software (Concierge, Melee.gg)",
+                "Decklist ingestion & validation",
+                "Player support & community management",
+                "Live ops dashboards & triage",
+                "Competitive ecosystems & formats",
+                "Broadcast/coverage coordination awareness"
+            ]
+        },
+        {
+            "name": "Civic Technology",
+            "keywords": [
+                "Verified constituent messaging",
+                "Public, privacy-safe summaries",
+                "Open data standards (OpenStates, Congress.gov)",
+                "Transparency & accountability UX",
+                "Accessibility (WCAG 2.2 AA) & inclusive design",
+                "Data privacy (GDPR/CCPA) by design",
+                "GovTech procurement & stakeholder alignment",
+                "Youth engagement & trust building",
+                "Policy literacy & civic education",
+                "Nonpartisan product thinking"
+            ]
+        },
+        {
+            "name": "AI-Augmented Products",
+            "keywords": [
+                "LLM integration (OpenAI API)",
+                "Natural language → SQL (RBAC guardrails)",
+                "AI UX & explainability",
+                "Retrieval & vector indexing (pgvector)",
+                "Observability & evaluation of AI features",
+                "Prompt engineering & libraries",
+                "Safety, bias, and ethics",
+                "Real-time analytics & telemetry",
+                "Data governance & compliance",
+                "Prototyping with React/React Native"
+            ]
+        },
+        {
+            "name": "Leadership & Mentorship",
+            "keywords": [
+                "Hiring loops & leveling frameworks",
+                "Career ladders for PM/Eng",
+                "1:1 coaching & feedback systems",
+                "Cross-functional rituals (standups, demos, postmortems)",
+                "Org design & change management",
+                "Stakeholder communication (C-suite & Board)",
+                "High-velocity, quality-focused delivery",
+                "Mentoring ICs into leads"
+            ]
+        },
+        {
+            "name": "Accessibility & Inclusive Design",
+            "keywords": [
+                "WCAG 2.2 AA practices",
+                "Keyboard & screen-reader support",
+                "Inclusive copy & UX writing",
+                "Localization & multicultural UX",
+                "Color contrast & motion sensitivity",
+                "Usability testing with assistive tech",
+                "Plain language & readability",
+                "Forms & error states"
+            ]
+        },
+        {
+            "name": "Open Source & Dev Tooling",
+            "keywords": [
+                "Developer experience (DX)",
+                "CLI tooling & docs",
+                "Code quality & linting",
+                "Automated testing & CI/CD",
+                "Package management & monorepos",
+                "API documentation (OpenAPI/Swagger)",
+                "Local dev environments & containers",
+                "Git workflows (PRs, trunk-based)"
+            ]
+        },
+        {
+            "name": "Cost & Reliability",
+            "keywords": [
+                "Cloud cost optimization & FinOps",
+                "SLOs/SLIs & error budgets",
+                "Capacity planning & load testing",
+                "Incident response & postmortems",
+                "Caching/CDN strategies",
+                "Chaos engineering drills",
+                "Blue/green & canary releases",
+                "Runbooks & on-call rotations"
+            ]
+        }
+    ],
+    "references": [
+        {
+            "name": "References available upon request"
+        }
+    ],
+    "preferences": {
+        "mission": "Help Jason Flatford get hired into senior product/technology leadership roles.",
+        "northStar": "Optimize every deliverable for CPO / VP Product / VP Product Engineering / hybrid product–technology leadership at Series A–C companies (<500 employees; ideally <200) in SaaS, AI, gaming/esports, and civic tech. Preferred locations: Roanoke, Washington DC, Seattle. Work arrangement: any.",
+        "roles": [
+            "Chief Product Officer",
+            "Head of Product",
+            "VP of Product",
+            "SVP of Product",
+            "VP of Product Engineering",
+            "Director of Product Management Technology",
+            "VP of Technical Product Management",
+            "Chief Innovation Officer",
+            "Chief Technology Innovation Officer",
+            "Chief Experience Officer",
+            "Chief AI Officer",
+            "Chief Transformation Officer",
+            "Chief Sustainability Officer",
+            "Chief Automation Officer",
+            "Fractional Chief Product Officer",
+            "Fractional Chief Technology Officer"
+        ],
+        "industries": [
+            "SaaS",
+            "AI",
+            "Gaming/Esports",
+            "Civic Tech/GovTech",
+            "Cybersecurity",
+            "Health Tech"
+        ],
+        "companySize": "Under 500 (ideally under 200)",
+        "stages": [
+            "Series A",
+            "Series B",
+            "Series C"
+        ],
+        "locations": [
+            "Roanoke, VA",
+            "Washington DC",
+            "Seattle, WA"
+        ],
+        "workArrangement": "Any",
+        "positioning": "Executive product & technology leader who is also hands-on (strategy + builder).",
+        "tone": [
+            "Professional",
+            "confident",
+            "approachable",
+            "data-driven"
+        ],
+        "emphasize": [
+            "Platform scaling",
+            "Full-stack ownership",
+            "SaaS",
+            "AI augmentation",
+            "Real-time systems",
+            "Payments/PCI awareness",
+            "Cross-functional leadership",
+            "Partnerships with global brands",
+            "Community-scale operations"
+        ],
+        "sourceOfTruthOrder": [
+            "userStatements",
+            "masterJson",
+            "linkedinProfile",
+            "webVerification"
+        ],
+        "conflictHandling": {
+            "rule": "Prefer user's latest statement; keep previous as context; use ranges or 'approx.' when needed; never invent."
+        },
+        "canonicalSpellings": {
+            "Flattsware LLC": {
+                "start": "2019",
+                "end": "2022"
+            },
+            "Keyrune Incorporated": {
+                "founded": "2022"
+            },
+            "Melee.gg": {
+                "started": "2019",
+                "note": "Originated at Flattsware; later under Keyrune"
+            },
+            "Duly": {
+                "url": "https://dulyelected.org"
+            },
+            "Memnai": {
+                "url": ""
+            },
+            "Concierge": {
+                "firstProduction": "2011-04-30 to 2011-05-01",
+                "note": "Grand Prix London; Richmond anecdote is context"
+            }
+        },
+        "projectStates": {
+            "Duly": "soft-launch, paused",
+            "Memnai": "prototype, paused",
+            "The Endless Grimoire": "prototype, paused"
+        },
+        "canonicalImpacts": {
+            "melee": {
+                "users": "~400,000",
+                "maus": "~70,000",
+                "organizerPartners": "~13,000",
+                "codebase": ">2,000,000 LoC",
+                "uptime": "99.99%+",
+                "languages": 8,
+                "notes": [
+                    "Azure→AWS migration",
+                    "Terraform/IaC",
+                    "Cloudflare WAF/CDN",
+                    "OpenAI-assisted analytics",
+                    "PCI-aware payments"
+                ]
+            },
+            "redBullUntapped": {
+                "largestIndieArenaEvent": "~2,400 players"
+            },
+            "concierge": {
+                "attendeesServed": "~100,000",
+                "adminOnly": true,
+                "rbac": true,
+                "badgePrintingScanning": true
+            }
+        },
+        "formattingAtsRules": [
+            "Bullets = action + scope + metric; keep concise and scannable.",
+            "Use active voice; present tense for current, past for previous.",
+            "Mirror JD keywords naturally; avoid keyword stuffing.",
+            "Prefer concrete numbers and ranges; avoid unverified superlatives.",
+            "Clean headings; short paragraphs; bold key metrics in export formats."
+        ],
+        "jsonResumeRules": {
+            "principles": [
+                "Master JSON is the source for all resumes, letters, and profiles.",
+                "Use schema fields correctly: impacts in 'highlights', short role summary in 'summary', stacks in 'keywords'."
+            ],
+            "consistentFields": {
+                "basics.profiles": [
+                    "LinkedIn",
+                    "Website (jasonflatford.com)"
+                ],
+                "projects": [
+                    "Duly",
+                    "Memnai",
+                    "The Endless Grimoire",
+                    "Concierge",
+                    "Melee"
+                ],
+                "workOrder": [
+                    "Keyrune Inc. / Melee.gg (EVP Product, 2019–2025)",
+                    "Flattsware LLC (2019–2022)",
+                    "Foresite LLC",
+                    "StarCityGames.com",
+                    "Eagle Boat Docks",
+                    "Tennessee Valley Authority"
+                ],
+                "educationNote": "Add courses note indicating bachelor’s-equivalent+ professional experience (15+ years)."
+            }
+        },
+        "contentPlaybook": {
+            "resume2Page": "Executive summary; 4–6 bullets for Keyrune/Melee, 2–4 for Flattsware, 2–3 for Foresite/SCG; single-line early roles; grouped skills; trimmed interests; include LinkedIn and website.",
+            "tailoredVersions": "Mirror JD phrasing in keywords/highlights; surface domain-relevant projects; spotlight compliance (HIPAA/SOC-2/PCI) when applicable.",
+            "coverLetters": "120–180 words; hook with a relevant metric + why-us + concrete value; no fluff.",
+            "founderPitch": "Emphasize scrappy scaling, partnerships, and product-led growth."
+        },
+        "researchVerification": {
+            "when": [
+                "event dates",
+                "attendance figures",
+                "partner names",
+                "public launches"
+            ],
+            "principle": "Prefer user's account when reputable sources disagree on minor details; never include confidential/NDA data."
+        },
+        "do": [
+            "Quantify outcomes; show ownership and constraints (small team, limited funding).",
+            "Highlight repeatable systems (roadmaps, runbooks, incident comms).",
+            "Keep language simple, specific, and business-relevant."
+        ],
+        "dont": [
+            "Personal health details or negative commentary about employers.",
+            "Deep code dives unless role-specific.",
+            "Unverified claims, vague statements, or over-designed PDFs that hurt ATS."
+        ],
+        "operatingBehaviors": [
+            "Deliver complete outputs in the current response.",
+            "If a request is complex/ambiguous, make a best-effort pass and note assumptions.",
+            "Maintain a professional, confident, approachable tone; avoid filler.",
+            "Proactive guardrails: if the user suggests something counterproductive or an anti-pattern (e.g., ATS-unfriendly formatting, keyword stuffing, misleading titles/dates), flag it succinctly, explain the risk, propose a better alternative with an example, proceed with the best-practice version by default (while preserving the original idea), and if the user still prefers their approach, implement it while noting trade-offs."
+        ]
+    }
+}

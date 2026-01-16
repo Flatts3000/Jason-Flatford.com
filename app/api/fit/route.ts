@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import {Resend} from "resend";
+import CV from "@/data/EXAMPLE_CV.json";
 
 /** Keep Node runtime for parsers */
 export const runtime = "nodejs";
@@ -41,25 +42,21 @@ async function readFileText(file: File): Promise<string> {
     throw new Error("Unsupported file type. Please upload a PDF, DOCX, or TXT.");
 }
 
-/* ---------- Profile ---------- */
+/* ---------- Profile (loaded from JSON Resume) ---------- */
 const PROFILE = {
-    name: "Jason Flatford",
-    targetTitles: [
-        "Chief Product Officer", "Head of Product", "VP of Product", "SVP of Product",
-        "VP of Product Engineering", "VP of Technical Product Management", "Chief Innovation Officer",
-        "Chief Experience Officer", "Chief AI Officer", "Chief Transformation Officer"
-    ],
-    locations: ["Roanoke, VA", "Washington DC", "Seattle, WA"],
-    industries: ["SaaS", "AI/ML", "Gaming/Esports", "Civic Tech", "Cybersecurity", "Health Tech", "Infrastructure/Civil Tech", "Developer Platforms"],
-    stagePref: ["Series A", "Series B", "Series C", "High-growth <500 employees"],
-    strengths: [
-        "Scaled Melee.gg to 400K+ users, ~70K MAU, ~13K organizer partners",
-        "Architected 2M+ LOC multi-tenant SaaS with real-time analytics, multilingual UX, PCI-aware payments",
-        "OpenAI-powered analytics & automation to reduce operational workload",
-        "Exec leadership + hands-on (.NET, Java/Kotlin/Spring Boot, React/React Native, AWS/Azure; Docker/Terraform; Postgres/MySQL/Mongo/Redis)",
-        "Governance/compliance: GDPR, COPPA, PCI, SOC-2",
-        "Partnerships with global brands (Wizards of the Coast, Red Bull); PLG and cross-functional leadership",
-    ],
+    name: CV.basics.name,
+    targetTitles: CV.preferences.roles,
+    locations: CV.preferences.locations,
+    industries: CV.preferences.industries,
+    stagePref: CV.preferences.stages.concat([`High-growth <${CV.preferences.companySize.split(" ")[1] || "500"} employees`]),
+    strengths: CV.work[0]?.highlights?.slice(0, 6) ?? [],
+    summary: CV.basics.summary,
+    skills: CV.skills.flatMap(s => s.keywords).slice(0, 30),
+    topProjects: CV.projects.slice(0, 3).map(p => ({
+        name: p.name,
+        description: p.description,
+        highlights: p.highlights?.slice(0, 3) ?? [],
+    })),
 };
 
 /* ---------- Prompts ---------- */
